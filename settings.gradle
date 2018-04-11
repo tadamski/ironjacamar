@@ -20,6 +20,7 @@
  */
 
 include "api"
+include "adapters"
 include "common"
 include "core"
 include "codegenerator"
