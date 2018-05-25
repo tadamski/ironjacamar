@@ -119,7 +119,8 @@ public abstract class WrappedConnection extends JBossWrapper implements Connecti
          // only the mc inside the WrappedConnection is returned to the pool.
          // That means the only moment this method is called with a non-null mc is
          // during WrappedConnection creation
-         if (lockCount > 0) {
+         if (lockCount > 0)
+         {
             throw new IllegalStateException(bundle.wrappedConnectionInUse());
          }
       }
@@ -584,8 +585,8 @@ public abstract class WrappedConnection extends JBossWrapper implements Connecti
          try
          {
             if (spy)
-               spyLogger.debugf("%s [%s] prepareStatement(%s, %s)"
-                                , jndiName, Constants.SPY_LOGGER_PREFIX_CONNECTION,
+               spyLogger.debugf("%s [%s] prepareStatement(%s, %s)",
+                                jndiName, Constants.SPY_LOGGER_PREFIX_CONNECTION,
                                 sql, Arrays.toString(columnIndexes));
 
             return wrapPreparedStatement(mc.getRealConnection().prepareStatement(sql, columnIndexes),

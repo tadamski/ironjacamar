@@ -21,19 +21,15 @@
 
 package org.ironjacamar.adapters.jdbc;
 
-import org.ironjacamar.adapters.jdbc.util.Cache;
 import org.ironjacamar.adapters.jdbc.statistics.JdbcStatisticsPlugin;
+import org.ironjacamar.adapters.jdbc.util.Cache;
 import org.ironjacamar.adapters.jdbc.util.CacheListener;
 import org.ironjacamar.adapters.jdbc.util.LRUCache;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import org.jboss.logging.Logger;
-
 
 /**
  * Cache for PreparedStatements. When ps ages out, close it.

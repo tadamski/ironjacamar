@@ -21,7 +21,6 @@
 
 package org.ironjacamar.adapters.jdbc;
 
-
 import org.ironjacamar.adapters.AdaptersBundle;
 
 import java.io.Serializable;
@@ -29,6 +28,7 @@ import java.sql.SQLException;
 import java.sql.Wrapper;
 
 import org.jboss.logging.Messages;
+
 
 /**
  * JBossWrapper.

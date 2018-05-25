@@ -85,7 +85,7 @@ public class URLSelector implements URLSelectorStrategy
          return currentUrl;
 
       triesCounter++;
-      currentUrl = urls.get((currentIndex++)%urls.size());
+      currentUrl = urls.get((currentIndex++) % urls.size());
       return currentUrl;
    }
 

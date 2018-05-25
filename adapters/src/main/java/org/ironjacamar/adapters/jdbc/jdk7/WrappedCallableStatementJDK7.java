@@ -21,8 +21,8 @@
 
 package org.ironjacamar.adapters.jdbc.jdk7;
 
-import org.ironjacamar.adapters.jdbc.WrappedResultSet;
 import org.ironjacamar.adapters.jdbc.WrappedCallableStatement;
+import org.ironjacamar.adapters.jdbc.WrappedResultSet;
 
 import java.sql.CallableStatement;
 import java.sql.ResultSet;

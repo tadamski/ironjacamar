@@ -22,8 +22,8 @@
 package org.ironjacamar.adapters.jdbc.jdk7;
 
 import org.ironjacamar.adapters.jdbc.BaseWrapperManagedConnection;
-import org.ironjacamar.adapters.jdbc.WrappedConnection;
 import org.ironjacamar.adapters.jdbc.WrappedCallableStatement;
+import org.ironjacamar.adapters.jdbc.WrappedConnection;
 import org.ironjacamar.adapters.jdbc.WrappedPreparedStatement;
 import org.ironjacamar.adapters.jdbc.WrappedStatement;
 
