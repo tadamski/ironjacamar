@@ -29,8 +29,8 @@ import org.ironjacamar.adapters.jdbc.spi.ClassLoaderPlugin;
 import org.ironjacamar.adapters.jdbc.spi.ExceptionSorter;
 import org.ironjacamar.adapters.jdbc.spi.StaleConnectionChecker;
 import org.ironjacamar.adapters.jdbc.spi.ValidConnectionChecker;
-import org.ironjacamar.adapters.jdbc.spi.reauth.ReauthPlugin;
 import org.ironjacamar.adapters.jdbc.spi.listener.ConnectionListener;
+import org.ironjacamar.adapters.jdbc.spi.reauth.ReauthPlugin;
 
 import org.ironjacamar.adapters.jdbc.statistics.JdbcStatisticsPlugin;
 import org.ironjacamar.adapters.jdbc.util.Injection;
@@ -66,6 +66,7 @@ import javax.transaction.TransactionSynchronizationRegistry;
 
 import org.jboss.logging.Logger;
 import org.jboss.logging.Messages;
+
 
 import org.ietf.jgss.GSSCredential;
 import org.ietf.jgss.GSSException;

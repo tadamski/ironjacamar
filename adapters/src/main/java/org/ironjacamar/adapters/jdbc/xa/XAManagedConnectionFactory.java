@@ -81,12 +81,14 @@ public class XAManagedConnectionFactory extends BaseWrapperManagedConnectionFact
 
    /**
     * Constructor
+    * @param xaDataSourceProps properties
     */
    public XAManagedConnectionFactory(Map<String, String> xaDataSourceProps)
    {
       this.xads = null;
       this.xadsSelector = null;
-      this.xaProps = xaDataSourceProps == null? Collections.emptyMap(): Collections.unmodifiableMap(xaDataSourceProps);
+      this.xaProps =
+              xaDataSourceProps == null ? Collections.emptyMap() : Collections.unmodifiableMap(xaDataSourceProps);
    }
 
    /**

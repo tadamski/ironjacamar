@@ -56,10 +56,11 @@ public interface URLSelectorStrategy
 
    /**
     * URL was accepted - potentially mark it as active
-    * @param url
+    * @param url The URL
     */
-   public default void success(String url) {
-	   // DO NOTHING
+   public default void success(String url)
+   {
+   // DO NOTHING
    }
 
    /**

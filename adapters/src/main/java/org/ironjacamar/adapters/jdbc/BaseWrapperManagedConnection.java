@@ -53,6 +53,8 @@ import javax.security.auth.Subject;
 
 import org.jboss.logging.Messages;
 
+
+
 /**
  * BaseWrapperManagedConnection
  *
@@ -409,7 +411,8 @@ public abstract class BaseWrapperManagedConnection implements ManagedConnection,
       {
          if (getLog().isTraceEnabled())
             dumpLockInformation(false);
-      } finally
+      }
+      finally
       {
          if (lock.isHeldByCurrentThread())
             lock.unlock();

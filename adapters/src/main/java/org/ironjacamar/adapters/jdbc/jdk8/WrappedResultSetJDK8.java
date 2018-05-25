@@ -21,8 +21,8 @@
 
 package org.ironjacamar.adapters.jdbc.jdk8;
 
-import org.ironjacamar.adapters.jdbc.WrappedResultSet;
 import org.ironjacamar.adapters.jdbc.Constants;
+import org.ironjacamar.adapters.jdbc.WrappedResultSet;
 import org.ironjacamar.adapters.jdbc.WrappedStatement;
 
 import java.sql.ResultSet;

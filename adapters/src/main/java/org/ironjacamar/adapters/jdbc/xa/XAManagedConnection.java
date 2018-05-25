@@ -301,7 +301,8 @@ public class XAManagedConnection extends BaseWrapperManagedConnection implements
          {
             if (isFailedXA(e.errorCode))
             {
-               if (failedToEndXids == null) {
+               if (failedToEndXids == null)
+               {
                   this.failedToEndXids = new HashSet<>();
                }
                // only broadcast the error if it hasn't been broadcast before

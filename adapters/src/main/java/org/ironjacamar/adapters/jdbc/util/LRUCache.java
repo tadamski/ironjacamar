@@ -477,6 +477,8 @@ public class LRUCache<K, V> implements Cache<K, V>
 
    /**
     * Double linked cell used as entry in the cache list.
+    * @param <K> The key
+    * @param <V> The value
     */
    public class LRUCacheEntry<K, V>
    {
