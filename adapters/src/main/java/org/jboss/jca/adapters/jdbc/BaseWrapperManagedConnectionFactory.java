@@ -21,20 +21,6 @@
 
 package org.jboss.jca.adapters.jdbc;
 
-import org.jboss.jca.adapters.AdaptersBundle;
-import org.jboss.jca.adapters.AdaptersLogger;
-import org.jboss.jca.adapters.jdbc.classloading.TCClassLoaderPlugin;
-import org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter;
-import org.jboss.jca.adapters.jdbc.extensions.novendor.NullStaleConnectionChecker;
-import org.jboss.jca.adapters.jdbc.extensions.novendor.NullValidConnectionChecker;
-import org.jboss.jca.adapters.jdbc.spi.ClassLoaderPlugin;
-import org.jboss.jca.adapters.jdbc.spi.ExceptionSorter;
-import org.jboss.jca.adapters.jdbc.spi.StaleConnectionChecker;
-import org.jboss.jca.adapters.jdbc.spi.ValidConnectionChecker;
-import org.jboss.jca.adapters.jdbc.spi.listener.ConnectionListener;
-import org.jboss.jca.adapters.jdbc.spi.reauth.ReauthPlugin;
-import org.jboss.jca.adapters.jdbc.statistics.JdbcStatisticsPlugin;
-import org.jboss.jca.adapters.jdbc.util.Injection;
 import org.ironjacamar.core.spi.statistics.Statistics;
 
 import java.io.ByteArrayInputStream;
@@ -64,8 +50,24 @@ import javax.resource.spi.security.PasswordCredential;
 import javax.security.auth.Subject;
 import javax.transaction.TransactionSynchronizationRegistry;
 
+import org.jboss.jca.adapters.AdaptersBundle;
+import org.jboss.jca.adapters.AdaptersLogger;
+import org.jboss.jca.adapters.jdbc.classloading.TCClassLoaderPlugin;
+import org.jboss.jca.adapters.jdbc.extensions.novendor.NullExceptionSorter;
+import org.jboss.jca.adapters.jdbc.extensions.novendor.NullStaleConnectionChecker;
+import org.jboss.jca.adapters.jdbc.extensions.novendor.NullValidConnectionChecker;
+import org.jboss.jca.adapters.jdbc.spi.ClassLoaderPlugin;
+import org.jboss.jca.adapters.jdbc.spi.ExceptionSorter;
+import org.jboss.jca.adapters.jdbc.spi.StaleConnectionChecker;
+import org.jboss.jca.adapters.jdbc.spi.ValidConnectionChecker;
+import org.jboss.jca.adapters.jdbc.spi.listener.ConnectionListener;
+import org.jboss.jca.adapters.jdbc.spi.reauth.ReauthPlugin;
+import org.jboss.jca.adapters.jdbc.statistics.JdbcStatisticsPlugin;
+import org.jboss.jca.adapters.jdbc.util.Injection;
+
 import org.jboss.logging.Logger;
 import org.jboss.logging.Messages;
+
 
 import org.ietf.jgss.GSSCredential;
 import org.ietf.jgss.GSSException;

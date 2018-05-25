@@ -21,13 +21,13 @@
 
 package org.jboss.jca.adapters.jdbc;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.jboss.jca.adapters.jdbc.statistics.JdbcStatisticsPlugin;
 import org.jboss.jca.adapters.jdbc.util.Cache;
 import org.jboss.jca.adapters.jdbc.util.CacheListener;
 import org.jboss.jca.adapters.jdbc.util.LRUCache;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import org.jboss.logging.Logger;
 

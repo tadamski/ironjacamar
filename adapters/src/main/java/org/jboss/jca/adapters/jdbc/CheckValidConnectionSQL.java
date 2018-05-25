@@ -21,12 +21,12 @@
 
 package org.jboss.jca.adapters.jdbc;
 
-import org.jboss.jca.adapters.jdbc.spi.ValidConnectionChecker;
-
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.jboss.jca.adapters.jdbc.spi.ValidConnectionChecker;
 
 /**
  * Implements check valid connection sql

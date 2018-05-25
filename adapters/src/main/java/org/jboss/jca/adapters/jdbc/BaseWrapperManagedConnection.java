@@ -21,10 +21,6 @@
 
 package org.jboss.jca.adapters.jdbc;
 
-import org.jboss.jca.adapters.AdaptersBundle;
-import org.jboss.jca.adapters.AdaptersLogger;
-import org.jboss.jca.adapters.jdbc.spi.reauth.ReauthPlugin;
-import org.jboss.jca.adapters.jdbc.util.ReentrantLock;
 import org.ironjacamar.core.spi.transaction.ConnectableResource;
 import org.ironjacamar.core.spi.transaction.ConnectableResourceListener;
 
@@ -53,7 +49,14 @@ import javax.resource.spi.ManagedConnectionMetaData;
 import javax.resource.spi.ResourceAdapterInternalException;
 import javax.security.auth.Subject;
 
+import org.jboss.jca.adapters.AdaptersBundle;
+import org.jboss.jca.adapters.AdaptersLogger;
+import org.jboss.jca.adapters.jdbc.spi.reauth.ReauthPlugin;
+import org.jboss.jca.adapters.jdbc.util.ReentrantLock;
+
 import org.jboss.logging.Messages;
+
+
 
 /**
  * BaseWrapperManagedConnection
@@ -411,7 +414,8 @@ public abstract class BaseWrapperManagedConnection implements ManagedConnection,
       {
          if (getLog().isTraceEnabled())
             dumpLockInformation(false);
-      } finally
+      }
+      finally
       {
          if (lock.isHeldByCurrentThread())
             lock.unlock();

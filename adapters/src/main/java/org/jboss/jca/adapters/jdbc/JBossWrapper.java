@@ -21,13 +21,13 @@
 
 package org.jboss.jca.adapters.jdbc;
 
-import org.jboss.jca.adapters.AdaptersBundle;
-
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.sql.Wrapper;
 
+import org.jboss.jca.adapters.AdaptersBundle;
 import org.jboss.logging.Messages;
+
 
 /**
  * JBossWrapper.

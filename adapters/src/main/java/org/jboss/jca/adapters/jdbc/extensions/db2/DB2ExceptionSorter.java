@@ -21,13 +21,13 @@
 
 package org.jboss.jca.adapters.jdbc.extensions.db2;
 
-import org.jboss.jca.adapters.jdbc.spi.ExceptionSorter;
-
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.StringTokenizer;
+
+import org.jboss.jca.adapters.jdbc.spi.ExceptionSorter;
 
 import org.jboss.logging.Logger;
 
