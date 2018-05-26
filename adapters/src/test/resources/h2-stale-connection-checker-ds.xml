@@ -10,7 +10,7 @@
       <password>sa</password>
     </security>
     <validation>
-    <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.spi.testimpl.TestStaleConnectionChecker">
+    <stale-connection-checker class-name="org.ironjacamar.adapters.jdbc.spi.testimpl.TestStaleConnectionChecker">
       <config-property name="integerTest">100</config-property>
     </stale-connection-checker>
     </validation>
