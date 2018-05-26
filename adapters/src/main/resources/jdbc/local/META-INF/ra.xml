@@ -39,10 +39,10 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
   </license>
    
   <resourceadapter>
-    <resourceadapter-class>org.jboss.jca.adapters.jdbc.JDBCResourceAdapter</resourceadapter-class>
+    <resourceadapter-class>org.ironjacamar.adapters.jdbc.JDBCResourceAdapter</resourceadapter-class>
     <outbound-resourceadapter>
       <connection-definition>
-        <managedconnectionfactory-class>org.jboss.jca.adapters.jdbc.local.LocalManagedConnectionFactory</managedconnectionfactory-class>
+        <managedconnectionfactory-class>org.ironjacamar.adapters.jdbc.local.LocalManagedConnectionFactory</managedconnectionfactory-class>
         <config-property>
           <description>The jdbc driver class.</description>
           <config-property-name>DriverClass</config-property-name>
@@ -169,9 +169,9 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
           <config-property-type>java.lang.String</config-property-type>
         </config-property>
         <connectionfactory-interface>javax.sql.DataSource</connectionfactory-interface>
-        <connectionfactory-impl-class>org.jboss.jca.adapters.jdbc.WrapperDataSource</connectionfactory-impl-class>
+        <connectionfactory-impl-class>org.ironjacamar.adapters.jdbc.WrapperDataSource</connectionfactory-impl-class>
         <connection-interface>java.sql.Connection</connection-interface>
-        <connection-impl-class>org.jboss.jca.adapters.jdbc.WrappedConnection</connection-impl-class>
+        <connection-impl-class>org.ironjacamar.adapters.jdbc.WrappedConnection</connection-impl-class>
       </connection-definition>
       <transaction-support>LocalTransaction</transaction-support>
       <authentication-mechanism>

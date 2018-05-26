@@ -21,7 +21,7 @@
  */
 package org.jboss.jca.adapters.jdbc.spi.testimpl;
 
-import org.jboss.jca.adapters.jdbc.spi.ExceptionSorter;
+import org.ironjacamar.adapters.jdbc.spi.ExceptionSorter;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

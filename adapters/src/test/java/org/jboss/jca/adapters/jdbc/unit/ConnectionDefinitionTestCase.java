@@ -23,7 +23,7 @@
 package org.jboss.jca.adapters.jdbc.unit;
 
 import org.jboss.jca.adapters.ArquillianJCATestUtils;
-import org.jboss.jca.adapters.jdbc.WrappedConnection;
+import org.ironjacamar.adapters.jdbc.WrappedConnection;
 import org.jboss.jca.adapters.jdbc.unit.support.TestConnection;
 import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
 

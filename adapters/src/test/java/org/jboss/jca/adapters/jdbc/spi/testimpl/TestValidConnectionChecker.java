@@ -21,7 +21,7 @@
  */
 package org.jboss.jca.adapters.jdbc.spi.testimpl;
 
-import org.jboss.jca.adapters.jdbc.spi.ValidConnectionChecker;
+import org.ironjacamar.adapters.jdbc.spi.ValidConnectionChecker;
 
 import java.sql.Connection;
 import java.sql.SQLException;

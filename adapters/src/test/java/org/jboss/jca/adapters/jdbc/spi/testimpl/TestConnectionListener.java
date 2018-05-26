@@ -21,7 +21,7 @@
  */
 package org.jboss.jca.adapters.jdbc.spi.testimpl;
 
-import org.jboss.jca.adapters.jdbc.spi.listener.ConnectionListener;
+import org.ironjacamar.adapters.jdbc.spi.listener.ConnectionListener;
 
 import java.sql.Connection;
 import java.sql.SQLException;

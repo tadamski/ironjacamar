@@ -25,7 +25,9 @@ import javax.resource.ResourceException;
 import javax.resource.spi.security.PasswordCredential;
 import javax.security.auth.Subject;
 
-import org.jboss.jca.adapters.jdbc.jdk8.WrappedConnectionJDK8;
+import org.ironjacamar.adapters.jdbc.jdk8.WrappedConnectionJDK8;
+import org.ironjacamar.adapters.jdbc.local.LocalManagedConnection;
+import org.ironjacamar.adapters.jdbc.local.LocalManagedConnectionFactory;
 import org.jboss.jca.adapters.jdbc.local.testimpl.MockConnection;
 import org.jboss.jca.adapters.jdbc.local.testimpl.MockDriver;
 import org.junit.Assert;

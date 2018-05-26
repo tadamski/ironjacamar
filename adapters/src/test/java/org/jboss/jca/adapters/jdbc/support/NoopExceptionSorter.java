@@ -22,7 +22,7 @@
 
 package org.jboss.jca.adapters.jdbc.support;
 
-import org.jboss.jca.adapters.jdbc.spi.ExceptionSorter;
+import org.ironjacamar.adapters.jdbc.spi.ExceptionSorter;
 
 import java.io.Serializable;
 import java.sql.SQLException;
