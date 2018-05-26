@@ -5,7 +5,7 @@
 
   <datasource jndi-name="java:/ConDefDS" pool-name="ConDefDS">
     <connection-url>jdbc:test:test</connection-url>
-    <driver-class>org.jboss.jca.adapters.jdbc.unit.support.TestDriver</driver-class>
+    <driver-class>org.ironjacamar.adapters.jdbc.unit.support.TestDriver</driver-class>
     <connection-property name="StringProperty">test</connection-property>
     <security>
       <user-name>test</user-name>
