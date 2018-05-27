@@ -23,7 +23,7 @@
 package org.ironjacamar.adapters.jdbc.unit;
 
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
-import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
 
 import java.sql.Connection;
 
