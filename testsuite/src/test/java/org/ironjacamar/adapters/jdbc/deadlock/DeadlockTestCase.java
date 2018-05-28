@@ -22,8 +22,8 @@
 
 package org.ironjacamar.adapters.jdbc.deadlock;
 
-import org.jboss.jca.embedded.Embedded;
-import org.jboss.jca.embedded.EmbeddedFactory;
+import org.ironjacamar.embedded.Embedded;
+import org.ironjacamar.embedded.EmbeddedFactory;
 
 import java.net.URL;
 import java.sql.Connection;

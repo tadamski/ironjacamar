@@ -23,7 +23,7 @@ package org.ironjacamar.adapters.jdbc.spi;
 
 import org.ironjacamar.adapters.jdbc.spi.testimpl.TestStaleConnectionChecker;
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
-import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
 
 import java.sql.Connection;
 import java.sql.SQLException;

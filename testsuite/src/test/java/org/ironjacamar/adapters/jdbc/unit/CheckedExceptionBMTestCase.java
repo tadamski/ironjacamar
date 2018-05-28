@@ -25,8 +25,8 @@ package org.ironjacamar.adapters.jdbc.unit;
 
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
 import org.ironjacamar.adapters.jdbc.WrappedConnection;
-import org.jboss.jca.arquillian.embedded.Configuration;
-import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.Configuration;
+import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
 
 import java.sql.Connection;
 import java.sql.SQLException;
