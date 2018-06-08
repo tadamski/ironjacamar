@@ -25,7 +25,9 @@ package org.ironjacamar.adapters.jdbc.unit;
 
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
 import org.ironjacamar.adapters.jdbc.WrappedConnection;
-import org.ironjacamar.embedded.Configuration;
+import org.ironjacamar.embedded.Deployment;
+import org.ironjacamar.embedded.byteman.BMRule;
+import org.ironjacamar.embedded.byteman.BMRules;
 import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
 
 import java.sql.Connection;
@@ -34,11 +36,8 @@ import java.sql.SQLException;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.jboss.arquillian.container.test.api.Deployment;
+import org.ironjacamar.embedded.junit4.IronJacamar;
 
-import org.jboss.arquillian.extension.byteman.api.BMRule;
-import org.jboss.arquillian.extension.byteman.api.BMRules;
-import org.jboss.arquillian.junit.Arquillian;
 
 import org.jboss.logging.Logger;
 import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
@@ -56,12 +55,19 @@ import static org.junit.Assert.fail;
  *
  * @author <a href="mailto:johnathonlee@ironjacamar.org">Johnathon Lee</a>
  */
-@RunWith(Arquillian.class)
-@Configuration(autoActivate = false)
-@BMRule(name = "Verify BaseWrapperManagedConnection receives the error",
-           targetClass = "BaseWrapperManagedConnection",
-           targetMethod = "connectionError",
-           action = "flag(\"exceptionThrown\"); org.junit.Assert.assertEquals(\"DESIRED ERROR\", $1.getMessage())")  
+@RunWith(IronJacamar.class)
+@BMRules({
+        @BMRule(name = "Throw exception on getUnderlyingConnection",
+                targetClass = "BaseWrapperManagedConnection",
+                targetMethod = "getRealConnection",
+                targetLocation = "ENTRY",
+                action = "clear(\"exceptionThrown\"); throw new java.sql.SQLException(\"DESIRED ERROR\")"),
+        @BMRule(name = "check for exceptionThrown flag",
+                targetClass = "WrappedConnection",
+                targetMethod = "getUnderlyingConnection",
+                targetLocation = "THROW",
+                condition = "!flagged(\"exceptionThrown\")",
+                action = "throw new RuntimeException(\"FAILED\")") })
 public class CheckedExceptionBMTestCase
 {
 
@@ -112,18 +118,6 @@ public class CheckedExceptionBMTestCase
     * @exception Throwable Thrown if case of an error
     */
    @Test
-   @BMRules({
-   @BMRule(name = "Throw exception on getUnderlyingConnection",
-           targetClass = "BaseWrapperManagedConnection",
-           targetMethod = "getRealConnection",
-           targetLocation = "ENTRY",
-           action = "clear(\"exceptionThrown\"); throw new java.sql.SQLException(\"DESIRED ERROR\")"),
-   @BMRule(name = "check for exceptionThrown flag",
-           targetClass = "WrappedConnection",
-           targetMethod = "getUnderlyingConnection",
-           targetLocation = "THROW",
-           condition = "!flagged(\"exceptionThrown\")",
-           action = "throw new RuntimeException(\"FAILED\")") })
    public void testGetUnderlying() throws Throwable
    {
       assertNotNull(ds);

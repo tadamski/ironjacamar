@@ -92,7 +92,8 @@ ext {
     validation_spec: "javax.validation:validation-api:1.1.0.Final",
     asciidoctor:  "org.asciidoctor:asciidoctor-gradle-plugin:1.5.2",
     asciidoctorjpdf: "org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.11",
-    asciidoctorjepub3: "org.asciidoctor:asciidoctorj-epub3:1.5.0-alpha.6"
+    asciidoctorjepub3: "org.asciidoctor:asciidoctorj-epub3:1.5.0-alpha.6",
+    h2_database:  "com.h2database:h2:1.3.173"
   ]
 }
 

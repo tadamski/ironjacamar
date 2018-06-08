@@ -24,19 +24,19 @@ package org.ironjacamar.adapters.jdbc.unit;
 
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
 import org.ironjacamar.adapters.ConnectionManagerUtil;
-import org.jboss.jca.arquillian.embedded.Inject;
-import org.jboss.jca.core.connectionmanager.ConnectionManager;
-import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.core.connectionmanager.ConnectionManager;
+import org.ironjacamar.embedded.Deployment;
+import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.junit4.IronJacamar;
 
 import java.sql.Connection;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.sql.DataSource;
 import javax.transaction.RollbackException;
 import javax.transaction.TransactionManager;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.jboss.shrinkwrap.descriptor.api.Descriptor;
 
@@ -52,7 +52,7 @@ import static org.junit.Assert.assertNotNull;
  *
  * @author <a href="mailto:jesper.pedersen@ironjacamar.org">Jesper Pedersen</a>
  */
-@RunWith(Arquillian.class)
+@RunWith(IronJacamar.class)
 public class CommitRollbackTestCase
 {
 
@@ -92,7 +92,7 @@ public class CommitRollbackTestCase
    @Resource(mappedName = "java:/SQLExceptionDS")
    private static DataSource ds;
 
-   @Inject(name = "RealTransactionManager")
+   @Inject
    private TransactionManager tm;
 
    //-------------------------------------------------------------------------------------||

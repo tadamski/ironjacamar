@@ -23,6 +23,7 @@ package org.ironjacamar.adapters.jdbc.spi;
 
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
 import org.ironjacamar.adapters.jdbc.spi.testimpl.TestConnectionListener;
+import org.ironjacamar.embedded.Deployment;
 import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
 
 import java.sql.Connection;
@@ -31,8 +32,7 @@ import java.sql.SQLException;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
+import org.ironjacamar.embedded.junit4.IronJacamar;
 import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.jboss.shrinkwrap.descriptor.api.Descriptor;
 
@@ -46,7 +46,7 @@ import static org.junit.Assert.*;
  *
  * @author <a href="jesper.pedersen@ironjacamar.org">Jesper Pedersen</a>
  */
-@RunWith(Arquillian.class)
+@RunWith(IronJacamar.class)
 public class ConnectionListenerTestCase
 {
 

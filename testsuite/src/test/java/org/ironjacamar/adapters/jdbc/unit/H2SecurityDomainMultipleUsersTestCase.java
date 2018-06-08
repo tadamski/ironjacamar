@@ -23,15 +23,15 @@
 package org.ironjacamar.adapters.jdbc.unit;
 
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
-import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.Deployment;
+import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.junit4.IronJacamar;
 
 import java.sql.Connection;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.jboss.shrinkwrap.descriptor.api.Descriptor;
 
@@ -46,7 +46,7 @@ import static org.junit.Assert.*;
  *
  * @author <a href="mailto:jesper.pedersen@ironjacamar.org">Jesper Pedersen</a>
  */
-@RunWith(Arquillian.class)
+@RunWith(IronJacamar.class)
 public class H2SecurityDomainMultipleUsersTestCase
 {
 
@@ -70,11 +70,11 @@ public class H2SecurityDomainMultipleUsersTestCase
     * @return The deployment archive
     * @throws Exception in case of errors
     */
-   @Deployment(order = 2, name = "security")
+   @Deployment(order = 2)
    public static Descriptor createSecurityDomain() throws Exception
    {
       ClassLoader cl = Thread.currentThread().getContextClassLoader();
-      InputStreamDescriptor isd = new InputStreamDescriptor("h2-sd-mu.xml", 
+      InputStreamDescriptor isd = new InputStreamDescriptor("h2-sd-mu.xml",
                                                             cl.getResourceAsStream("h2-sd-mu.xml"));
       return isd;
    }
@@ -84,7 +84,7 @@ public class H2SecurityDomainMultipleUsersTestCase
     * @return The deployment archive
     * @throws Exception in case of errors
     */
-   @Deployment(order = 3, name = "datasources")
+   @Deployment(order = 3)
    public static Descriptor createDataSources() throws Exception
    {
       ClassLoader cl = Thread.currentThread().getContextClassLoader();

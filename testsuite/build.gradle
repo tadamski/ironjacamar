@@ -114,6 +114,9 @@ dependencies {
   testCompile(libraries.validation_spec) {
     transitive = false
   }
+  testCompile(libraries.h2_database) {
+    transitive = false
+  }
   testCompile parent.subprojects.sourceSets.main.output
 }
 

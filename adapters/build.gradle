@@ -21,6 +21,9 @@
 def baseName = "ironjacamar-adapters";
 
 dependencies {
+    compile(libraries.narayana_spi) {
+        transitive = false
+    }
     compile project(':api')
     compile project(':common')
     compile project(':core')

@@ -23,7 +23,9 @@
 package org.ironjacamar.adapters.jdbc.unit;
 
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
-import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.Deployment;
+import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.junit4.IronJacamar;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,8 +36,6 @@ import java.sql.Statement;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.jboss.shrinkwrap.descriptor.api.Descriptor;
 
@@ -55,7 +55,7 @@ import static org.junit.Assert.fail;
  * @author <a href="mailto:jesper.pedersen@ironjacamar.org">Jesper Pedersen</a>
  * @version $Revision: $
  */
-@RunWith(Arquillian.class)
+@RunWith(IronJacamar.class)
 public class PreparedStatementTestCase
 {
 

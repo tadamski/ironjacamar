@@ -23,15 +23,15 @@
 package org.ironjacamar.adapters.jdbc.unit;
 
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
-import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.Deployment;
+import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.junit4.IronJacamar;
 
 import java.sql.Connection;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.jboss.shrinkwrap.descriptor.api.Descriptor;
 
@@ -46,7 +46,7 @@ import static org.junit.Assert.assertNotNull;
  * @author <a href="mailto:jesper.pedersen@ironjacamar.org">Jesper Pedersen</a>
  * @version $Revision: $
  */
-@RunWith(Arquillian.class)
+@RunWith(IronJacamar.class)
 public class H2SecurityDomainTestCase
 {
 
@@ -74,7 +74,7 @@ public class H2SecurityDomainTestCase
    public static Descriptor createDescriptor() throws Exception
    {
       ClassLoader cl = Thread.currentThread().getContextClassLoader();
-      InputStreamDescriptor isd = new InputStreamDescriptor("h2-sd-ds.xml", 
+      InputStreamDescriptor isd = new InputStreamDescriptor("h2-sd-ds.xml",
                                                             cl.getResourceAsStream("h2-sd-ds.xml"));
       return isd;
    }
