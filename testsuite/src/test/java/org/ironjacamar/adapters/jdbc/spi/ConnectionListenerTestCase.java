@@ -74,7 +74,7 @@ public class ConnectionListenerTestCase
    {
       ClassLoader cl = Thread.currentThread().getContextClassLoader();
       InputStreamDescriptor isd = new InputStreamDescriptor("h2-connection-listener-ds.xml", 
-                                                            cl.getResourceAsStream("h2-connection-listener-ds.xml"));
+                                                            cl.getResourceAsStream("adapters/h2-connection-listener-ds.xml"));
       return isd;
    }
 

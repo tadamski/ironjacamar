@@ -70,10 +70,10 @@ public abstract class BaseWrapperManagedConnection implements ManagedConnection,
    private static final WrappedConnectionFactory WRAPPED_CONNECTION_FACTORY;
 
    /** JDBC 4.2 factory */
-   private static final String JDBC42_FACTORY = "WrappedConnectionFactoryJDK8";
+   private static final String JDBC42_FACTORY = "org.ironjacamar.adapters.jdbc.jdk8.WrappedConnectionFactoryJDK8";
 
    /** JDBC 4.1 factory */
-   private static final String JDBC41_FACTORY = "WrappedConnectionFactoryJDK7";
+   private static final String JDBC41_FACTORY = "org.ironjacamar.adapters.jdbc.jdk7.WrappedConnectionFactoryJDK7";
 
    /** The bundle */
    protected static AdaptersBundle bundle = Messages.getBundle(AdaptersBundle.class);
