@@ -23,7 +23,9 @@ package org.ironjacamar.adapters.jdbc.spi;
 import org.ironjacamar.adapters.ArquillianJCATestUtils;
 import org.ironjacamar.adapters.jdbc.spi.testimpl.TestConnectionListener;
 import org.ironjacamar.embedded.Deployment;
-import org.ironjacamar.embedded.dsl.InputStreamDescriptor;
+import org.ironjacamar.embedded.dsl.datasources20.api.DatasourceType;
+import org.ironjacamar.embedded.dsl.datasources20.api.DatasourcesDescriptor;
+import org.ironjacamar.embedded.dsl.datasources20.api.ExtensionType;
 import org.ironjacamar.embedded.junit4.IronJacamar;
 
 import java.sql.Connection;
@@ -34,6 +36,8 @@ import javax.sql.DataSource;
 
 import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.jboss.shrinkwrap.descriptor.api.Descriptor;
+
+import org.jboss.shrinkwrap.descriptor.api.Descriptors;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,7 +63,7 @@ public class ConnectionListenerTestCase
     * @throws Exception in case of errors
     */
    @Deployment(order = 1)
-   public static ResourceAdapterArchive createArchive() throws Exception
+   private ResourceAdapterArchive createArchive() throws Exception
    {
       return ArquillianJCATestUtils.buildShrinkwrapJdbcLocal();
    }
@@ -70,12 +74,25 @@ public class ConnectionListenerTestCase
     * @throws Exception in case of errors
     */
    @Deployment(order = 2)
-   public static Descriptor createDescriptor() throws Exception
+   private Descriptor createDescriptor() throws Exception
    {
-      ClassLoader cl = Thread.currentThread().getContextClassLoader();
-      InputStreamDescriptor isd = new InputStreamDescriptor("h2-connection-listener-ds.xml", 
-                                                            cl.getResourceAsStream("adapters/h2-connection-listener-ds.xml"));
-      return isd;
+      DatasourcesDescriptor descriptor = Descriptors.create(DatasourcesDescriptor.class,
+              "h2-connection-listener-ds.xml");
+
+      DatasourceType datasource = descriptor.createDatasource();
+
+      datasource.jndiName("java:/H2DS");
+
+      datasource.connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
+      datasource.driverClass("org.h2.Driver");
+
+      datasource.getOrCreateSecurity().userName("sa").password("sa");
+
+      ExtensionType connectionListener = datasource.getOrCreatePool().getOrCreateConnectionListener();
+      connectionListener.className("org.ironjacamar.adapters.jdbc.spi.testimpl.TestConnectionListener");
+      connectionListener.createConfigProperty().name("testString").text("MyTest");
+
+      return descriptor;
    }
 
    //-------------------------------------------------------------------------------------||
