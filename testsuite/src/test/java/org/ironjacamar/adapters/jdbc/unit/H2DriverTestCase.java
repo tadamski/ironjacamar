@@ -75,7 +75,7 @@ public class H2DriverTestCase
    {
       ClassLoader cl = Thread.currentThread().getContextClassLoader();
       InputStreamDescriptor isd = new InputStreamDescriptor("h2-driver-ds.xml",
-                                                            cl.getResourceAsStream("h2-driver-ds.xml"));
+                                                            cl.getResourceAsStream("adapters/h2-driver-ds.xml"));
       return isd;
    }
 

@@ -80,7 +80,7 @@ public class ExceptionSorterTestCase
    {
       ClassLoader cl = Thread.currentThread().getContextClassLoader();
       InputStreamDescriptor isd = new InputStreamDescriptor("h2-exception-sorter-ds.xml", 
-                                                            cl.getResourceAsStream("h2-exception-sorter-ds.xml"));
+                                                            cl.getResourceAsStream("adapters/h2-exception-sorter-ds.xml"));
       return isd;
    }
 
