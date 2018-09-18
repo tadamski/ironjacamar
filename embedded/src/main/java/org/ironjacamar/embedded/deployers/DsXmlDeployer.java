@@ -34,15 +34,14 @@ import org.ironjacamar.common.api.metadata.spec.ResourceAdapter;
 import org.ironjacamar.common.metadata.ds.DatasourcesImpl;
 import org.ironjacamar.common.metadata.ds.DsParser;
 import org.ironjacamar.common.metadata.merge.Merger;
-import org.ironjacamar.core.spi.mdr.MetadataRepository;
-import org.ironjacamar.core.spi.mdr.NotFoundException;
+import org.ironjacamar.core.api.metadatarepository.Metadata;
+import org.ironjacamar.core.api.metadatarepository.MetadataRepository;
+import org.ironjacamar.core.spi.metadatarepository.NotFoundException;
 import org.ironjacamar.core.spi.naming.JndiStrategy;
 import org.ironjacamar.core.spi.rar.ResourceAdapterRepository;
 import org.ironjacamar.core.spi.security.SubjectFactory;
 import org.ironjacamar.deployers.DeployersLogger;
 import org.ironjacamar.deployers.common.AbstractDsDeployer;
-import org.jboss.jca.deployers.common.CommonDeployment;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -51,6 +50,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -210,48 +210,27 @@ public class DsXmlDeployer extends AbstractDsDeployer implements Deployer
 
             String deploymentName = f.getName();
 
-            Set<String> raDeployments = mdr.getResourceAdapters();
+            Collection<Metadata> raDeployments = mdr.getMetadata();
             String uniqueJdbcLocalId = null;
             String uniqueJdbcXAId = null;
 
-            for (String s : raDeployments)
+            for (Metadata metadata : raDeployments)
             {
-                if (s.endsWith(jdbcLocal))
+                String name = metadata.getName();
+                if (name.endsWith(jdbcLocal))
                 {
-                    URL urlJdbcLocal = new URL(s);
+                    URL urlJdbcLocal = new URL(name);
                     uniqueJdbcLocalId = urlJdbcLocal.toExternalForm();
                 }
-                else if (s.endsWith(jdbcXA))
+                else if (name.endsWith(jdbcXA))
                 {
-                    URL urlJdbcXA = new URL(s);
+                    URL urlJdbcXA = new URL(name);
                     uniqueJdbcXAId = urlJdbcXA.toExternalForm();
                 }
             }
 
             kernel = context.getKernel();
 
-            if (numberOfDataSources(dataSources) == 1 || verifyTypes(dataSources))
-            {
-                CommonDeployment c = createObjectsAndInjectValue(url, deploymentName,
-                        uniqueJdbcLocalId, uniqueJdbcXAId,
-                        dataSources, parent);
-
-                List<ObjectName> onames = registerManagementView(c.getDataSources(),
-                        kernel.getMBeanServer(),
-                        kernel.getName());
-
-                return new DsXmlDeployment(c.getURL(), c.getDeploymentName(),
-                        c.getResourceAdapter(), c.getResourceAdapterKey(),
-                        c.getBootstrapContextIdentifier(),
-                        resourceAdapterRepository,
-                        c.getCfs(), c.getCfJndiNames(), c.getConnectionManagers(),
-                        c.getRecovery(), getXAResourceRecoveryRegistry(),
-                        c.getDataSources(), getManagementRepository(),
-                        onames, kernel.getMBeanServer(),
-                        c.getCl());
-            }
-            else
-            {
                 List<DsXmlDeployment> deployments = new ArrayList<DsXmlDeployment>();
                 Map<String, Driver> driversMap = new HashMap<String, Driver>();
                 for (Driver driver : dataSources.getDrivers())
@@ -304,7 +283,6 @@ public class DsXmlDeployer extends AbstractDsDeployer implements Deployer
                 }
 
                 return new DsXmlDeployments(url, deployments, deployments.get(0).getClassLoader());
-            }
         }
         catch (DeployException de)
         {

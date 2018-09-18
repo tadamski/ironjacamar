@@ -50,6 +50,9 @@ public class Constants
    /** DEPLOYER_DASH_RA_XML */
    public static final int DEPLOYER_DASH_RA_XML = 7;
 
+   /** DSXML_DEPLOYER */
+   public static final int DSXML_DEPLOYER = 8;
+
    /** ATTACHMENT_ARCHIVE */
    public static final String ATTACHMENT_ARCHIVE = "archive";
 

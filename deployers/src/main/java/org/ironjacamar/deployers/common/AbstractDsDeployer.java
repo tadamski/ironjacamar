@@ -19,7 +19,7 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package org.jboss.jca.deployers.common;
+package org.ironjacamar.deployers.common;
 
 import org.ironjacamar.common.api.metadata.Defaults;
 import org.ironjacamar.common.api.metadata.common.Credential;
