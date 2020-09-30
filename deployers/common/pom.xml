@@ -32,9 +32,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ironjacamar-deployers</artifactId>
+    <artifactId>ironjacamar-deployers-common</artifactId>
 
-    <name>IronJacamar: Deployers</name>
+    <name>IronJacamar: Deployers common</name>
 
     <dependencies>
         <dependency>

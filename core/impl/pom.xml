@@ -37,6 +37,12 @@
 <name>IronJacamar: Core</name>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>org.jboss.ironjacamar</groupId>-->
+<!--            <artifactId>ironjacamar-deployers-fungal</artifactId>-->
+<!--            <version>1.4.22.Final</version>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.jboss.ironjacamar</groupId>
             <artifactId>ironjacamar-api</artifactId>
