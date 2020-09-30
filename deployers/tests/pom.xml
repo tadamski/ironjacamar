@@ -125,7 +125,7 @@
                 <version>${version.surefire.plugin}</version>
                 <configuration>
                     <systemPropertyVariables combine.children="append">
-                        <archives.dir>${project.build.directory}/test-archives</archives.dir>
+                        <project.build.directory>${project.build.directory}</project.build.directory>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
