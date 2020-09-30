@@ -32,9 +32,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ironjacamar-adapters</artifactId>
+    <artifactId>ironjacamar-jdbc</artifactId>
 
-    <name>IronJacamar: Adapters</name>
+    <name>IronJacamar: JDBC</name>
 
     <dependencies>
         <dependency>
