@@ -38,7 +38,8 @@
     <name>IronJacamar: Deployers parent</name>
 
     <modules>
-        <module>impl</module>
+        <module>common</module>
+        <module>fungal</module>
         <module>tests</module>
     </modules>
 
