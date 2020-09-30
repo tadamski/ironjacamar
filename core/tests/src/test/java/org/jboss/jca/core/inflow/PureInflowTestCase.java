@@ -22,6 +22,8 @@
 
 package org.jboss.jca.core.inflow;
 
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.jca.core.inflow.ra.PureInflowResourceAdapter;
 import org.jboss.jca.core.inflow.ra.inflow.PureInflowActivationSpec;
 import org.jboss.jca.core.spi.rar.Endpoint;
 import org.jboss.jca.core.spi.rar.MessageListener;
@@ -33,12 +35,16 @@ import org.jboss.jca.embedded.EmbeddedFactory;
 import java.net.URL;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.naming.InitialContext;
 import javax.resource.spi.ActivationSpec;
 
 import org.jboss.logging.Logger;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -57,6 +63,19 @@ public class PureInflowTestCase
 
    private static Logger log = Logger.getLogger(PureInflowTestCase.class);
 
+   public static ResourceAdapterArchive createDeployment()
+   {
+      JavaArchive jar = ShrinkWrap.create(JavaArchive.class, "pure-inflow.jar");
+      jar.addClass(PureInflowResourceAdapter.class);
+
+      ResourceAdapterArchive rar =
+              ShrinkWrap.create(ResourceAdapterArchive.class, "pure-inflow.rar");
+      rar.addAsLibrary(jar);
+      rar.addAsManifestResource("rars/inflow/META-INF/ironjacamar.xml", "ironjacamar.xml");
+      rar.addAsManifestResource("rars/inflow/META-INF/ra.xml", "ra.xml");
+      return rar;
+   }
+
    // --------------------------------------------------------------------------------||
    // Tests --------------------------------------------------------------------------||
    // --------------------------------------------------------------------------------||
@@ -69,7 +88,7 @@ public class PureInflowTestCase
    public void testInflow() throws Throwable
    {
       Embedded embedded = EmbeddedFactory.create(true);
-      URL pureInflowRar = PureInflowTestCase.class.getClassLoader().getResource("pure-inflow.rar");
+      ResourceAdapterArchive pureInflowRar = createDeployment();
 
       InitialContext ic = null;
 

@@ -22,9 +22,11 @@
 
 package org.jboss.jca.core.security.reauth;
 
+import org.jboss.jca.core.inflow.ra.PureInflowResourceAdapter;
 import org.jboss.jca.core.security.reauth.eis.ReauthServer;
 import org.jboss.jca.core.security.reauth.ra.cri.ReauthConnection;
 import org.jboss.jca.core.security.reauth.ra.cri.ReauthConnectionFactory;
+import org.jboss.jca.core.security.reauth.ra.cri.ReauthCri;
 import org.jboss.jca.embedded.Embedded;
 import org.jboss.jca.embedded.EmbeddedFactory;
 
@@ -35,6 +37,9 @@ import javax.naming.InitialContext;
 
 import org.jboss.logging.Logger;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -62,6 +67,19 @@ public class CRITestCase
    private static int port = 19000;
    private static ReauthServer reauthServer = null;
 
+   public static ResourceAdapterArchive createDeployment()
+   {
+      JavaArchive jar = ShrinkWrap.create(JavaArchive.class, "reauth-cri.jar");
+      jar.addPackage(ReauthCri.class.getPackage());
+
+      ResourceAdapterArchive rar =
+              ShrinkWrap.create(ResourceAdapterArchive.class, "reauth-cri.rar");
+      rar.addAsLibrary(jar);
+      rar.addAsManifestResource("rars/security/reauth/cri/META-INF/ironjacamar.xml", "ironjacamar.xml");
+      rar.addAsManifestResource("rars/security/reauth/cri/META-INF/ra.xml", "ra.xml");
+      return rar;
+   }
+
 
    // --------------------------------------------------------------------------------||
    // Tests --------------------------------------------------------------------------||
@@ -75,10 +93,10 @@ public class CRITestCase
    public void testBasic() throws Throwable
    {
       Context context = null;
-      URL deployment = null;
+      ResourceAdapterArchive deployment = null;
       try
       {
-         deployment = CRITestCase.class.getClassLoader().getResource("reauth-cri.rar");
+         deployment = createDeployment();
 
          embedded.deploy(deployment);
 
@@ -123,10 +141,10 @@ public class CRITestCase
    public void testTwoUsers() throws Throwable
    {
       Context context = null;
-      URL deployment = null;
+      ResourceAdapterArchive deployment = null;
       try
       {
-         deployment = CRITestCase.class.getClassLoader().getResource("reauth-cri.rar");
+         deployment = createDeployment();
 
          embedded.deploy(deployment);
 
