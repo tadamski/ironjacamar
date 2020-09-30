@@ -44,6 +44,11 @@
         </dependency>
         <dependency>
             <groupId>${ironjacamar.groupId}</groupId>
+            <artifactId>ironjacamar-core-impl</artifactId>
+            <version>${ironjacamar.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${ironjacamar.groupId}</groupId>
             <artifactId>ironjacamar-embedded-arquillian</artifactId>
         </dependency>
 

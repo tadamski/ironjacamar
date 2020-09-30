@@ -39,7 +39,12 @@
     <dependencies>
         <dependency>
             <groupId>${ironjacamar.groupId}</groupId>
-            <artifactId>ironjacamar-deployers</artifactId>
+            <artifactId>ironjacamar-deployers-common</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>${ironjacamar.groupId}</groupId>
+            <artifactId>ironjacamar-deployers-fungal</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

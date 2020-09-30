@@ -39,7 +39,11 @@
     <dependencies>
         <dependency>
             <groupId>org.jboss.ironjacamar</groupId>
-            <artifactId>ironjacamar-core</artifactId>
+            <artifactId>ironjacamar-core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.ironjacamar</groupId>
+            <artifactId>ironjacamar-core-impl</artifactId>
         </dependency>
 
         <dependency>

@@ -27,19 +27,23 @@
 
     <parent>
         <groupId>org.jboss.ironjacamar</groupId>
-        <artifactId>ironjacamar-parent</artifactId>
+        <artifactId>ironjacamar-deployers-parent</artifactId>
         <version>1.4.0.Final-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>ironjacamar-deployers-fungal</artifactId>
 
-    <name>IronJacamar: Deployers common</name>
+    <name>IronJacamar: Deployers fungal</name>
 
     <dependencies>
         <dependency>
             <groupId>org.jboss.ironjacamar</groupId>
-            <artifactId>ironjacamar-core</artifactId>
+            <artifactId>ironjacamar-core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.ironjacamar</groupId>
+            <artifactId>ironjacamar-deployers-common</artifactId>
         </dependency>
 
         <dependency>

@@ -39,11 +39,15 @@
     <dependencies>
         <dependency>
             <groupId>${ironjacamar.groupId}</groupId>
-            <artifactId>ironjacamar-core</artifactId>
+            <artifactId>ironjacamar-core-api</artifactId>
         </dependency>
         <dependency>
             <groupId>${ironjacamar.groupId}</groupId>
-            <artifactId>ironjacamar-deployers</artifactId>
+            <artifactId>ironjacamar-core-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${ironjacamar.groupId}</groupId>
+            <artifactId>ironjacamar-deployers-common</artifactId>
         </dependency>
         <dependency>
             <groupId>${ironjacamar.groupId}</groupId>

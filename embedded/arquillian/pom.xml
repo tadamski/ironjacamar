@@ -39,11 +39,15 @@
     <dependencies>
         <dependency>
             <groupId>org.jboss.ironjacamar</groupId>
+            <artifactId>ironjacamar-core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.ironjacamar</groupId>
             <artifactId>ironjacamar-embedded</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jboss.ironjacamar</groupId>
-            <artifactId>ironjacamar-deployers</artifactId>
+            <artifactId>ironjacamar-deployers-fungal</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.fungal</groupId>

@@ -32,16 +32,16 @@
         <relativePath>../pom.xml</relativePath>
 </parent>
 
-<artifactId>ironjacamar-core</artifactId>
+<artifactId>ironjacamar-core-impl</artifactId>
 
-<name>IronJacamar: Core</name>
+<name>IronJacamar: Core implementation</name>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.jboss.ironjacamar</groupId>-->
-<!--            <artifactId>ironjacamar-deployers-fungal</artifactId>-->
-<!--            <version>1.4.22.Final</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.jboss.ironjacamar</groupId>
+            <artifactId>ironjacamar-test-eis</artifactId>
+            <version>1.4.22.Final</version>
+        </dependency>
 
         <dependency>
             <groupId>org.jboss.ironjacamar</groupId>
@@ -50,6 +50,14 @@
         <dependency>
             <groupId>org.jboss.ironjacamar</groupId>
             <artifactId>ironjacamar-common-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.ironjacamar</groupId>
+            <artifactId>ironjacamar-common-spi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.ironjacamar</groupId>
+            <artifactId>ironjacamar-core-api</artifactId>
         </dependency>
         <dependency>
             <groupId>jakarta.validation</groupId>

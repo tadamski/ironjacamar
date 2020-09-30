@@ -134,12 +134,22 @@
             </dependency>
             <dependency>
                 <groupId>${ironjacamar.groupId}</groupId>
-                <artifactId>ironjacamar-core</artifactId>
+                <artifactId>ironjacamar-core-api</artifactId>
                 <version>${ironjacamar.version}</version>
             </dependency>
             <dependency>
                 <groupId>${ironjacamar.groupId}</groupId>
-                <artifactId>ironjacamar-deployers</artifactId>
+                <artifactId>ironjacamar-core-impl</artifactId>
+                <version>${ironjacamar.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${ironjacamar.groupId}</groupId>
+                <artifactId>ironjacamar-deployers-common</artifactId>
+                <version>${ironjacamar.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${ironjacamar.groupId}</groupId>
+                <artifactId>ironjacamar-deployers-fungal</artifactId>
                 <version>${ironjacamar.version}</version>
             </dependency>
             <dependency>
