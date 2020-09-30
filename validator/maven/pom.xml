@@ -27,22 +27,25 @@
 
     <parent>
         <groupId>org.jboss.ironjacamar</groupId>
-        <artifactId>ironjacamar-parent</artifactId>
+        <artifactId>ironjacamar-validator-parent</artifactId>
         <version>1.4.0.Final-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ironjacamar-validator-parent</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>ironjacamar-validator-maven</artifactId>
 
-    <name>IronJacamar: Validator parent</name>
+    <name>IronJacamar: Validator Maven</name>
 
-    <modules>
-        <module>ant</module>
-        <module>cli</module>
-        <module>impl</module>
-        <module>maven</module>
-        <module>tests</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.ironjacamar</groupId>
+            <artifactId>ironjacamar-validator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
