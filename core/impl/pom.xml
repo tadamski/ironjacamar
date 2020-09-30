@@ -43,7 +43,7 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.ironjacamar</groupId>
-            <artifactId>ironjacamar-common</artifactId>
+            <artifactId>ironjacamar-common-api</artifactId>
         </dependency>
         <dependency>
             <groupId>jakarta.validation</groupId>

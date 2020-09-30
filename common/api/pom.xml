@@ -27,20 +27,12 @@
 
     <parent>
         <groupId>org.jboss.ironjacamar</groupId>
-        <artifactId>ironjacamar-parent</artifactId>
+        <artifactId>ironjacamar-common-parent</artifactId>
         <version>1.4.0.Final-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ironjacamar-common-parent</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>ironjacamar-common-api</artifactId>
 
-    <name>IronJacamar: Common parent</name>
-
-    <modules>
-        <module>api</module>
-        <module>impl</module>
-        <module>spi</module>
-    </modules>
-
+    <name>IronJacamar: Common API</name>
 </project>

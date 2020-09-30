@@ -37,10 +37,10 @@
     <name>IronJacamar: As</name>
 
     <dependencies>
-        <dependency>
-            <groupId>${ironjacamar.groupId}</groupId>
-            <artifactId>ironjacamar-common</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>${ironjacamar.groupId}</groupId>-->
+<!--            <artifactId>ironjacamar-common</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>${ironjacamar.groupId}</groupId>
             <artifactId>ironjacamar-core</artifactId>

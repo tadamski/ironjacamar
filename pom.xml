@@ -119,7 +119,17 @@
             </dependency>
             <dependency>
                 <groupId>${ironjacamar.groupId}</groupId>
-                <artifactId>ironjacamar-common</artifactId>
+                <artifactId>ironjacamar-common-api</artifactId>
+                <version>${ironjacamar.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${ironjacamar.groupId}</groupId>
+                <artifactId>ironjacamar-common-impl</artifactId>
+                <version>${ironjacamar.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${ironjacamar.groupId}</groupId>
+                <artifactId>ironjacamar-common-spi</artifactId>
                 <version>${ironjacamar.version}</version>
             </dependency>
             <dependency>
