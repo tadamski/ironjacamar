@@ -97,7 +97,7 @@ public class WorkManagerStartWorkTestCase
       long time = workManager.startWork(work);
       done.await();
       assertTrue(work.hasPostRun());
-      assertTrue(time > 0);
+      assertTrue(time > WorkManager.UNKNOWN);
    }
 
    /**
