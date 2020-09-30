@@ -102,7 +102,7 @@ public abstract class AnnotationsTestBase
 
          JavaArchive jar = createArchive();
 
-         String fileName = System.getProperty("archives.dir") + File.separator + "anno.jar";
+         String fileName = System.getProperty("project.build.directory") + File.separator + "anno.jar";
          File f = new File(fileName);
          jar.as(ZipExporter.class).exportTo(f, true);
          URL url = f.toURI().toURL();
