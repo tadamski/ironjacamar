@@ -39,7 +39,7 @@
     <dependencies>
         <dependency>
             <groupId>${ironjacamar.groupId}</groupId>
-            <artifactId>ironjacamar-common</artifactId>
+            <artifactId>ironjacamar-common-api</artifactId>
             <version>${ironjacamar.version}</version>
         </dependency>
         <dependency>

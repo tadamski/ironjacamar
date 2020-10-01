@@ -39,19 +39,28 @@
     <dependencies>
         <dependency>
             <groupId>${ironjacamar.groupId}</groupId>
-            <artifactId>ironjacamar-common</artifactId>
-            <version>${ironjacamar.version}</version>
+            <artifactId>ironjacamar-common-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${ironjacamar.groupId}</groupId>
+            <artifactId>ironjacamar-common-impl</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.github.fungal</groupId>
             <artifactId>fungal</artifactId>
-            <version>${version.com.github.fungal}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jboss.shrinkwrap</groupId>
             <artifactId>shrinkwrap-api</artifactId>
-            <version>${version.org.jboss.shrinkwrap}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.descriptors</groupId>
+            <artifactId>shrinkwrap-descriptors-api-base</artifactId>
         </dependency>
     </dependencies>
 
