@@ -34,13 +34,31 @@
 
     <artifactId>ironjacamar-sjc</artifactId>
 
-    <name>IronJacamar: Sjc</name>
+    <name>IronJacamar: Simple JCA Container</name>
 
     <dependencies>
+        <dependency>
+            <groupId>${ironjacamar.groupId}</groupId>
+            <artifactId>ironjacamar-deployers-fungal</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.github.fungal</groupId>
             <artifactId>fungal</artifactId>
             <version>${version.com.github.fungal}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${version.org.hibernate.validator}</version>
+            <exclusions>
+                <!-- TODO remove this exclusion once this supports Jakarta Validation -->
+                <!-- Superceded by jakarta.validation:jakarta.validation-api -->
+                <exclusion>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.ant</groupId>
@@ -51,10 +69,81 @@
             <artifactId>maven-plugin-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>3.0.1-b11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.naming</groupId>
+            <artifactId>jnpserver</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.narayana.jta</groupId>
+            <artifactId>narayana-jta</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.narayana.jts</groupId>
+            <artifactId>narayana-jts-integration</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.el</groupId>
+            <artifactId>jboss-el-api_3.0_spec</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.spec.javax.resource</groupId>
             <artifactId>jboss-connector-api_1.7_spec</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.stdio</groupId>
+            <artifactId>jboss-stdio</artifactId>
+        </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            <addClasspath>true</addClasspath>-->
+<!--                            <mainClass>org.jboss.jca.sjc.Main</mainClass>-->
+<!--                        </manifest>-->
+<!--                    </archive>-->
+<!--                    <descriptorRefs>-->
+<!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
+<!--                    </descriptorRefs>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        org.jboss.jca.sjc.Main
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
 
 </project>
