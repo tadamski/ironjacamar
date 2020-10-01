@@ -22,23 +22,17 @@
 
 package org.jboss.jca.core.workmanager.unit;
 
-import org.jboss.jca.arquillian.embedded.Configuration;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.jca.arquillian.embedded.Inject;
 import org.jboss.jca.core.api.workmanager.DistributedWorkManager;
 import org.jboss.jca.core.workmanager.rars.dwm.WorkConnectionFactory;
 import org.jboss.jca.embedded.dsl.InputStreamDescriptor;
-
-import java.util.UUID;
-
-import javax.resource.spi.BootstrapContext;
-
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 
-import org.junit.runner.RunWith;
+import javax.resource.spi.BootstrapContext;
+import java.util.UUID;
 
 
 /**
@@ -48,8 +42,8 @@ import org.junit.runner.RunWith;
  *
  * @author <a href="mailto:jesper.pedersen@ironjacamar.org">Jesper Pedersen</a>
  */
-@RunWith(Arquillian.class)
-@Configuration(autoActivate = false)
+//@RunWith(Arquillian.class)
+//@Configuration(autoActivate = false)
 public class DistributedWorkManagerJGroupsMJVMTestCase extends AbstractDistributedWorkManagerTest
 {
    /** injected DistributedWorkManager */
