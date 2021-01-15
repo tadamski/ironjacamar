@@ -66,7 +66,7 @@ public class JCA10TestCase
    {
       RaParser parser = new RaParser();
 
-      InputStream is = JCA10TestCase.class.getClassLoader().getResourceAsStream("../../resources/test/spec/ra-1.0.xml");
+      InputStream is = JCA10TestCase.class.getClassLoader().getResourceAsStream("spec/ra-1.0.xml");
       assertNotNull(is);
 
       XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -91,7 +91,7 @@ public class JCA10TestCase
       RaParser parser = new RaParser();
 
       InputStream is = JCA10TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.0.xml");
+         getResourceAsStream("spec/ra-1.0.xml");
       assertNotNull(is);
 
       XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -121,7 +121,7 @@ public class JCA10TestCase
       RaParser parser = new RaParser();
 
       InputStream is1 = JCA10TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.0.xml");
+         getResourceAsStream("spec/ra-1.0.xml");
       assertNotNull(is1);
 
       XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -135,7 +135,7 @@ public class JCA10TestCase
       is1.close();
 
       InputStream is2 = JCA10TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.0.xml");
+         getResourceAsStream("spec/ra-1.0.xml");
       assertNotNull(is2);
 
       XMLInputFactory inputFactory2 = XMLInputFactory.newInstance();
@@ -161,7 +161,7 @@ public class JCA10TestCase
       RaParser parser = new RaParser();
 
       InputStream is1 = JCA10TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.0.xml");
+         getResourceAsStream("spec/ra-1.0.xml");
       assertNotNull(is1);
 
       XMLInputFactory inputFactory = XMLInputFactory.newInstance();

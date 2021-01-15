@@ -58,7 +58,7 @@ public class ExpressionTestCase
       ResourceAdapterParser parser = new ResourceAdapterParser();
 
       InputStream is = ExpressionTestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/resourceadapter/expression.xml");
+         getResourceAsStream("resourceadapter/expression.xml");
       assertNotNull(is);
 
       StringBuilder sb = new StringBuilder();
@@ -76,7 +76,7 @@ public class ExpressionTestCase
       is.close();
 
       is = ExpressionTestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/resourceadapter/expression.xml");
+         getResourceAsStream("resourceadapter/expression.xml");
       assertNotNull(is);
       
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -126,7 +126,7 @@ public class ExpressionTestCase
       System.setProperty("Property8-2", "NestedValue8");
     
       try (InputStream is = ExpressionTestCase.class.getClassLoader().
-            getResourceAsStream("../../resources/test/resourceadapter/expression.xml"))
+            getResourceAsStream("resourceadapter/expression.xml"))
       {
          assertNotNull(is);
          XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);

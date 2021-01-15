@@ -71,7 +71,7 @@ public class IronJacamar20TestCase
       IronJacamarParser parser = new IronJacamarParser();
 
       InputStream is = IronJacamar20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ironjacamar/ironjacamar-2.0.xml");
+         getResourceAsStream("ironjacamar/ironjacamar-2.0.xml");
       assertNotNull(is);
 
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -93,7 +93,7 @@ public class IronJacamar20TestCase
       IronJacamarParser parser = new IronJacamarParser();
 
       InputStream is = IronJacamar20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ironjacamar/ironjacamar-2.0.xml");
+         getResourceAsStream("ironjacamar/ironjacamar-2.0.xml");
       assertNotNull(is);
 
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -120,7 +120,7 @@ public class IronJacamar20TestCase
       IronJacamarParser parser = new IronJacamarParser();
 
       InputStream is = IronJacamar20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ironjacamar/ironjacamar-2.0.xml");
+         getResourceAsStream("ironjacamar/ironjacamar-2.0.xml");
       assertNotNull(is);
 
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -154,7 +154,7 @@ public class IronJacamar20TestCase
       IronJacamarParser parser = new IronJacamarParser();
 
       InputStream is1 = IronJacamar20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ironjacamar/ironjacamar-2.0.xml");
+         getResourceAsStream("ironjacamar/ironjacamar-2.0.xml");
       assertNotNull(is1);
 
       XMLStreamReader xsr1 = XMLInputFactory.newInstance().createXMLStreamReader(is1);
@@ -165,7 +165,7 @@ public class IronJacamar20TestCase
       is1.close();
 
       InputStream is2 = IronJacamar20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ironjacamar/ironjacamar-2.0.xml");
+         getResourceAsStream("ironjacamar/ironjacamar-2.0.xml");
       assertNotNull(is2);
 
       XMLStreamReader xsr2 = XMLInputFactory.newInstance().createXMLStreamReader(is2);

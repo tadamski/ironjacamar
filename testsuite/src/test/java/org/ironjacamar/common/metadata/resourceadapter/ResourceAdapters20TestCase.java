@@ -73,7 +73,7 @@ public class ResourceAdapters20TestCase
       ResourceAdapterParser parser = new ResourceAdapterParser();
 
       InputStream is = ResourceAdapters20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/resourceadapter/dashra-2.0.xml");
+         getResourceAsStream("resourceadapter/dashra-2.0.xml");
       assertNotNull(is);
 
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -95,7 +95,7 @@ public class ResourceAdapters20TestCase
       ResourceAdapterParser parser = new ResourceAdapterParser();
 
       InputStream is = ResourceAdapters20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/resourceadapter/dashra-2.0.xml");
+         getResourceAsStream("resourceadapter/dashra-2.0.xml");
       assertNotNull(is);
 
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -122,7 +122,7 @@ public class ResourceAdapters20TestCase
       ResourceAdapterParser parser = new ResourceAdapterParser();
 
       InputStream is = ResourceAdapters20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/resourceadapter/dashra-2.0.xml");
+         getResourceAsStream("resourceadapter/dashra-2.0.xml");
       assertNotNull(is);
 
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -156,7 +156,7 @@ public class ResourceAdapters20TestCase
       ResourceAdapterParser parser = new ResourceAdapterParser();
 
       InputStream is1 = ResourceAdapters20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/resourceadapter/dashra-2.0.xml");
+         getResourceAsStream("resourceadapter/dashra-2.0.xml");
       assertNotNull(is1);
 
       XMLStreamReader xsr1 = XMLInputFactory.newInstance().createXMLStreamReader(is1);
@@ -167,7 +167,7 @@ public class ResourceAdapters20TestCase
       is1.close();
 
       InputStream is2 = ResourceAdapters20TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/resourceadapter/dashra-2.0.xml");
+         getResourceAsStream("resourceadapter/dashra-2.0.xml");
       assertNotNull(is2);
 
       XMLStreamReader xsr2 = XMLInputFactory.newInstance().createXMLStreamReader(is2);

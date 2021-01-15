@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+  <container qualifier="dev" default="true">
+    <configuration>
+            <property name="javaVmArguments">-Djboss.modules.system.pkgs=com.sun.tools.attach,org.jboss.byteman -Djdk.attach.allowAttachSelf=true</property>
+    </configuration>
+  </container>
+
+  <extension qualifier="byteman">
+    <property name="autoInstallAgent">true</property>
+    <property name="agentProperties">org.jboss.byteman.verbose=true</property>
+    <property name="containerAgentPort">17015</property>
+    <property name="clientAgentPort">17016</property>
+  </extension>
+
+</arquillian>
+

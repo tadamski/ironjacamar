@@ -43,7 +43,7 @@ import static org.junit.Assert.fail;
                   targetClass = "org.ironjacamar.core.api.deploymentrepository.DeploymentRepository",
                   targetMethod = "getDeployments",
                   action = "throw new java.lang.RuntimeException()")})
-public class BytemanTestCase
+public class   BytemanTestCase
 {
    /** The deployment repository */
    @Inject

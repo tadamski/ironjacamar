@@ -30,6 +30,7 @@ import org.ironjacamar.common.api.metadata.resourceadapter.AdminObject;
 import org.ironjacamar.common.api.metadata.resourceadapter.ConnectionDefinition;
 import org.ironjacamar.common.api.metadata.spec.Connector;
 import org.ironjacamar.common.metadata.resourceadapter.ResourceAdapterParser;
+import org.ironjacamar.rarinfo.Main;
 import org.ironjacamar.rars.ResourceAdapterFactory;
 import org.ironjacamar.rars.lazy.LazyConnection;
 import org.ironjacamar.rars.lazy.LazyConnectionFactory;

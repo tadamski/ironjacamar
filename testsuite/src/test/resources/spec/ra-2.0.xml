@@ -2,7 +2,7 @@
 <connector xmlns="http://jakarta.ee/xml/ns/jakartaee"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://jakarta.ee/xml/ns/jakartaee http://jakarta.ee/xml/ns/jakartaee/connector_2_0.xsd"
-           version="2.0" metadata-complete="false" id="ID001">
+           version="2.0" metadata-complete="true" id="ID001">
     <module-name id="ID003">module-name0</module-name>
     <description xml:lang="en-US" id="ID005">description0</description>
     <description xml:lang="de" id="ID007">description1</description>

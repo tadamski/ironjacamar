@@ -66,7 +66,7 @@ public class IronJacamarExpressionStoreTestCase
       System.setProperty("initial-pool-size", "3");
 
       try (InputStream is = IronJacamarExpressionStoreTestCase.class.getClassLoader().
-            getResourceAsStream("../../resources/test/ironjacamar/expression.xml");
+            getResourceAsStream("ironjacamar/expression.xml");
             ByteArrayOutputStream os = new ByteArrayOutputStream())
       {
          assertNotNull(is);

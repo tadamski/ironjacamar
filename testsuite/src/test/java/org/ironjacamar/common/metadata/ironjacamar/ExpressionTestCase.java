@@ -57,7 +57,7 @@ public class ExpressionTestCase
       IronJacamarParser parser = new IronJacamarParser();
 
       InputStream is = ExpressionTestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ironjacamar/expression.xml");
+         getResourceAsStream("ironjacamar/expression.xml");
       assertNotNull(is);
 
       StringBuilder sb = new StringBuilder();
@@ -75,7 +75,7 @@ public class ExpressionTestCase
       is.close();
 
       is = ExpressionTestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ironjacamar/expression.xml");
+         getResourceAsStream("ironjacamar/expression.xml");
       assertNotNull(is);
       
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -125,7 +125,7 @@ public class ExpressionTestCase
       System.setProperty("Property8", "Value8");
       
       try (InputStream is = ExpressionTestCase.class.getClassLoader().
-            getResourceAsStream("../../resources/test/ironjacamar/expression.xml"))
+            getResourceAsStream("ironjacamar/expression.xml"))
       {
          assertNotNull(is);
          XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);

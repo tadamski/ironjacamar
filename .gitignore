@@ -21,3 +21,5 @@ eclipse-target
 
 # Version file
 core/src/main/java/org/ironjacamar/Version.java
+
+target

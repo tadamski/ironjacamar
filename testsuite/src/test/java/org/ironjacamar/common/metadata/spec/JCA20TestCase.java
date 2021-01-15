@@ -1,6 +1,6 @@
-a/*
+/*
  * IronJacamar, a Java EE Connector Architecture implementation
- * Copyright 2014, Red Hat Inc, and individual contributors
+ * Copyright 2020, Red Hat Inc, and individual contributors
  * as indicated by the @author tags. See the copyright.txt file in the
  * distribution for a full listing of individual contributors.
  *
@@ -61,7 +61,7 @@ import static org.junit.Assert.fail;
  * JCA 2.0 tests
  * @author <a href="mailto:jesper.pedersen@ironjacamar.org">Jesper Pedersen</a>
  */
-public class JCA17TestCase
+public class JCA20TestCase
 {
     /**
      * Read
@@ -72,8 +72,8 @@ public class JCA17TestCase
     {
         RaParser parser = new RaParser();
 
-        InputStream is = JCA17TestCase.class.getClassLoader().
-                getResourceAsStream("../../resources/test/spec/ra-2.0.xml");
+        InputStream is = JCA20TestCase.class.getClassLoader().
+                getResourceAsStream("spec/ra-2.0.xml");
         assertNotNull(is);
 
         XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -94,8 +94,8 @@ public class JCA17TestCase
     {
         RaParser parser = new RaParser();
 
-        InputStream is = JCA17TestCase.class.getClassLoader().
-                getResourceAsStream("../../resources/test/spec/ra-2.0.xml");
+        InputStream is = JCA20TestCase.class.getClassLoader().
+                getResourceAsStream("spec/ra-2.0.xml");
         assertNotNull(is);
 
         XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -121,8 +121,8 @@ public class JCA17TestCase
     {
         RaParser parser = new RaParser();
 
-        InputStream is1 = JCA17TestCase.class.getClassLoader().
-                getResourceAsStream("../../resources/test/spec/ra-2.0.xml");
+        InputStream is1 = JCA20TestCase.class.getClassLoader().
+                getResourceAsStream("spec/ra-2.0.xml");
         assertNotNull(is1);
 
         XMLStreamReader xsr1 = XMLInputFactory.newInstance().createXMLStreamReader(is1);
@@ -132,8 +132,8 @@ public class JCA17TestCase
 
         is1.close();
 
-        InputStream is2 = JCA17TestCase.class.getClassLoader().
-                getResourceAsStream("../../resources/test/spec/ra-2.0.xml");
+        InputStream is2 = JCA20TestCase.class.getClassLoader().
+                getResourceAsStream("spec/ra-2.0.xml");
         assertNotNull(is2);
 
         XMLStreamReader xsr2 = XMLInputFactory.newInstance().createXMLStreamReader(is2);
@@ -155,8 +155,8 @@ public class JCA17TestCase
     {
         RaParser parser = new RaParser();
 
-        InputStream is1 = JCA17TestCase.class.getClassLoader().
-                getResourceAsStream("../../resources/test/spec/ra-2.0.xml");
+        InputStream is1 = JCA20TestCase.class.getClassLoader().
+                getResourceAsStream("spec/ra-2.0.xml");
         assertNotNull(is1);
 
         XMLStreamReader xsr1 = XMLInputFactory.newInstance().createXMLStreamReader(is1);
@@ -182,7 +182,7 @@ public class JCA17TestCase
     private void checkConnector(Connector c) throws Exception
     {
         assertEquals("ID001", c.getId());
-        assertEquals(Version.V_17, c.getVersion());
+        assertEquals(Version.V_20, c.getVersion());
         assertTrue(c.isMetadataComplete());
         assertEquals("module-name0", c.getModuleName());
         Field fld =  c.getClass().getDeclaredField("moduleName");

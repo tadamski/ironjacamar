@@ -62,7 +62,7 @@ public class ExpressionTestCase
       DsParser parser = new DsParser();
 
       InputStream is = ExpressionTestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ds/expression.xml");
+         getResourceAsStream("ds/expression.xml");
       assertNotNull(is);
 
       StringBuilder sb = new StringBuilder();
@@ -80,7 +80,7 @@ public class ExpressionTestCase
       is.close();
 
       is = ExpressionTestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/ds/expression.xml");
+         getResourceAsStream("ds/expression.xml");
       assertNotNull(is);
       
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -125,7 +125,7 @@ public class ExpressionTestCase
       
       
       try (InputStream is = ExpressionTestCase.class.getClassLoader().
-            getResourceAsStream("../../resources/test/ds/expression.xml"))
+            getResourceAsStream("ds/expression.xml"))
       {
          assertNotNull(is);
 

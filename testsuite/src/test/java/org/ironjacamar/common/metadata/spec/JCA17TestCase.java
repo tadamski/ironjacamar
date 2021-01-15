@@ -73,7 +73,7 @@ public class JCA17TestCase
       RaParser parser = new RaParser();
 
       InputStream is = JCA17TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.7.xml");
+         getResourceAsStream("spec/ra-1.7.xml");
       assertNotNull(is);
 
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -95,7 +95,7 @@ public class JCA17TestCase
       RaParser parser = new RaParser();
 
       InputStream is = JCA17TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.7.xml");
+         getResourceAsStream("spec/ra-1.7.xml");
       assertNotNull(is);
 
       XMLStreamReader xsr = XMLInputFactory.newInstance().createXMLStreamReader(is);
@@ -122,7 +122,7 @@ public class JCA17TestCase
       RaParser parser = new RaParser();
 
       InputStream is1 = JCA17TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.7.xml");
+         getResourceAsStream("spec/ra-1.7.xml");
       assertNotNull(is1);
 
       XMLStreamReader xsr1 = XMLInputFactory.newInstance().createXMLStreamReader(is1);
@@ -133,7 +133,7 @@ public class JCA17TestCase
       is1.close();
 
       InputStream is2 = JCA17TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.7.xml");
+         getResourceAsStream("spec/ra-1.7.xml");
       assertNotNull(is2);
 
       XMLStreamReader xsr2 = XMLInputFactory.newInstance().createXMLStreamReader(is2);
@@ -156,7 +156,7 @@ public class JCA17TestCase
       RaParser parser = new RaParser();
 
       InputStream is1 = JCA17TestCase.class.getClassLoader().
-         getResourceAsStream("../../resources/test/spec/ra-1.7.xml");
+         getResourceAsStream("spec/ra-1.7.xml");
       assertNotNull(is1);
 
       XMLStreamReader xsr1 = XMLInputFactory.newInstance().createXMLStreamReader(is1);

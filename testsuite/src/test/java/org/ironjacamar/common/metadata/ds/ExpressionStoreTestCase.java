@@ -68,7 +68,7 @@ public class ExpressionStoreTestCase
       System.setProperty("initial-pool-size", "3");
       
       try (InputStream is = ExpressionStoreTestCase.class.getClassLoader().
-            getResourceAsStream("../../resources/test/ds/expression.xml");
+            getResourceAsStream("ds/expression.xml");
             ByteArrayOutputStream os = new ByteArrayOutputStream())
       {
          assertNotNull(is);
