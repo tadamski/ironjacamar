@@ -191,9 +191,9 @@ public class OnePoolNoTxTestCase extends PoolTestCaseAbstract
    public void checkPool() throws Exception
    {
       AbstractPool pool = getPool();
-      assertTrue(((OnePool) pool).testConnection());
-      assertTrue(((OnePool) pool).testConnection(null, null));
-      assertTrue(pool.internalTestConnection(null, null));
+      ((OnePool) pool).testConnection();
+      ((OnePool) pool).testConnection(null, null);
+      pool.internalTestConnection(null, null);
    }
 
    /**

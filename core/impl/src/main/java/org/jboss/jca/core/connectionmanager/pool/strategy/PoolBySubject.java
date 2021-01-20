@@ -78,32 +78,25 @@ public class PoolBySubject extends AbstractPrefillPool
    /**
     * {@inheritDoc}
     */
-   public boolean testConnection()
+   public void testConnection() throws ResourceException
    {
-      try
-      {
          ConnectionManager cm = getConnectionManager();
          ManagedConnectionFactory mcf = getManagedConnectionFactory();
        
          Subject subject = createSubject(cm.getSubjectFactory(), cm.getSecurityDomain(), mcf, cm.getJndiName());
   
          if (subject != null)
-            return internalTestConnection(null, subject);
-      }
-      catch (Throwable t)
-      {
-         log.debugf(t, "Error during testConnection: %s", t.getMessage());
-      }
-
-      return false;
+            internalTestConnection(null, subject);
+         else
+            throw new ResourceException("Subject is null");
    }
 
    /**
     * {@inheritDoc}
     */
-   public boolean testConnection(ConnectionRequestInfo cri, Subject subject)
+   public void testConnection(ConnectionRequestInfo cri, Subject subject) throws ResourceException
    {
-      return internalTestConnection(null, subject);
+      internalTestConnection(null, subject);
    }
 
    /**

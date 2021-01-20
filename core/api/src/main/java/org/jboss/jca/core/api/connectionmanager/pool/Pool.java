@@ -21,6 +21,7 @@
  */
 package org.jboss.jca.core.api.connectionmanager.pool;
 
+import javax.resource.ResourceException;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.security.auth.Subject;
 
@@ -58,7 +59,7 @@ public interface Pool
     * Test if a connection can be obtained
     * @return True if it was possible to get a connection; otherwise false
     */
-   public boolean testConnection();
+   public void testConnection() throws ResourceException;
 
    /**
     * Test if a connection can be obtained
@@ -66,7 +67,7 @@ public interface Pool
     * @param subject Optional subject
     * @return True if it was possible to get a connection; otherwise false
     */
-   public boolean testConnection(ConnectionRequestInfo cri, Subject subject);
+   public void testConnection(ConnectionRequestInfo cri, Subject subject) throws ResourceException;
 
    /**
     * Get the statistics

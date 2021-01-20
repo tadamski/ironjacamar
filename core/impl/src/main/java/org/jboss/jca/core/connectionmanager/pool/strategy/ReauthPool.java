@@ -87,17 +87,17 @@ public class ReauthPool extends AbstractPool
    /**
     * {@inheritDoc}
     */
-   public boolean testConnection()
+   public void testConnection() throws ResourceException
    {
-      return false;
+      throw new ResourceException();
    }
 
    /**
     * {@inheritDoc}
     */
-   public boolean testConnection(ConnectionRequestInfo cri, Subject subject)
+   public void testConnection(ConnectionRequestInfo cri, Subject subject) throws ResourceException
    {
-      return internalTestConnection(cri, subject);
+      internalTestConnection(cri, subject);
    }
 
    /**

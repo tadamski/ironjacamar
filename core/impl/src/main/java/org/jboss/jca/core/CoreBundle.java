@@ -25,6 +25,8 @@ package org.jboss.jca.core;
 import org.jboss.logging.annotations.Message;
 import org.jboss.logging.annotations.MessageBundle;
 
+import javax.resource.ResourceException;
+
 /**
  * The core bundle.
  *
@@ -462,6 +464,12 @@ public interface CoreBundle
     */
    @Message(id = 659, value = "Unable to get connection listener")
    public String unableGetConnectionListener();
+
+   @Message(id = 660, value = "Pool is shutting down")
+   public String poolIsShuttingDown();
+
+   @Message(id = 661, value = "Pool is shutting down")
+   public String poolIsFull();
 
    // NAMING (700)
 
