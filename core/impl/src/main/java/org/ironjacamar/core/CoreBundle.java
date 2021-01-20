@@ -221,6 +221,13 @@ public interface CoreBundle
    @Message(id = 353, value = "Unabled to enlist resource, see the previous warnings.")
    public String unableToEnlist();
 
+   //POOL (600)
+
+   @Message(id = 660, value = "Pool is shutting down")
+   public String poolIsShuttingDown();
+
+   @Message(id = 661, value = "Pool is full")
+   public String poolIsFull();
 
    // NAMING (700)
 

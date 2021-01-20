@@ -113,7 +113,7 @@ public class TestConnectionTestCase
 
       DefaultPool defaultPool = (DefaultPool)p.getPool();
       
-      assertTrue(defaultPool.testConnection());      
+      defaultPool.testConnection();
    }
 
    /**
@@ -141,6 +141,6 @@ public class TestConnectionTestCase
 
       DefaultPool defaultPool = (DefaultPool)p.getPool();
       
-      assertTrue(defaultPool.testConnection(new TestConnectionRequestInfo(), sf.createSubject("")));      
+      defaultPool.testConnection(new TestConnectionRequestInfo(), sf.createSubject(""));
    }
 }
