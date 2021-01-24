@@ -44,6 +44,8 @@ public final class Extension implements JCAMetadata, ValidatableMetadata
 
    private final String className;
 
+   private final ClassLoader classLoader;
+
    private final Map<String, String> configPropertiesMap;
 
    /**
@@ -53,10 +55,11 @@ public final class Extension implements JCAMetadata, ValidatableMetadata
     * @param configPropertiesMap configPropertiesMap
     * @throws ValidateException ValidateException
     */
-   public Extension(String className, Map<String, String> configPropertiesMap) throws ValidateException
+   public Extension(String className, ClassLoader classLoader, Map<String, String> configPropertiesMap) throws ValidateException
    {
       super();
       this.className = className;
+      this.classLoader = classLoader;
       if (configPropertiesMap != null)
       {
          this.configPropertiesMap = new HashMap<String, String>(configPropertiesMap.size());
@@ -78,6 +81,17 @@ public final class Extension implements JCAMetadata, ValidatableMetadata
    {
       return className;
    }
+
+   /**
+    * Get the classLoader.
+    *
+    * @return the classLoader
+    */
+   public final ClassLoader getClassLoader()
+   {
+      return classLoader;
+   }
+
 
    /**
     * Get the configPropertiesMap.
@@ -236,7 +250,12 @@ public final class Extension implements JCAMetadata, ValidatableMetadata
       /** class-name attribute
       *
       */
-      CLASS_NAME("class-name");
+      CLASS_NAME("class-name"),
+
+      /** module attribute
+       *
+       */
+      MODULE("mdoule");
 
       private String name;
 

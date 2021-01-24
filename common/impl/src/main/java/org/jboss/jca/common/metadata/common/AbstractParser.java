@@ -803,7 +803,7 @@ public abstract class AbstractParser
                      throw new ParserException(bundle.missingClassName(enclosingTag));
                   }
 
-                  return new Extension(className, properties);
+                  return new Extension(className, null, properties);
                }
                else
                {
