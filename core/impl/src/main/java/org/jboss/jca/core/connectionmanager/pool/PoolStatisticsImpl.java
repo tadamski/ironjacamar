@@ -810,8 +810,10 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
     */
    public void deltaDestroyedCount()
    {
-      if (enabled.get())
+      if (enabled.get()) {
          destroyedCount.incrementAndGet();
+         inUseCount.decrementAndGet();
+      }
    }
 
    /**
