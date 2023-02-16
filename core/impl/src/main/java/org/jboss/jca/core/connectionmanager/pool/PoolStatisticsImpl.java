@@ -22,7 +22,10 @@
 
 package org.jboss.jca.core.connectionmanager.pool;
 
+import org.jboss.jca.core.CoreBundle;
+import org.jboss.jca.core.CoreLogger;
 import org.jboss.jca.core.api.connectionmanager.pool.PoolStatistics;
+import org.jboss.jca.core.connectionmanager.pool.strategy.PoolBySubjectAndCri;
 import org.jboss.jca.core.spi.transaction.XAResourceStatistics;
 
 import java.io.IOException;
@@ -39,6 +42,8 @@ import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+
+import org.jboss.logging.Logger;
 
 /**
  * Pool statistics
@@ -157,6 +162,8 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
    private transient AtomicLong startCount;
    private transient AtomicLong startTotalTime;
    private transient AtomicLong startMaxTime;
+
+   private static CoreLogger log = Logger.getMessageLogger(CoreLogger.class, PoolStatisticsImpl.class.getName());
 
    /**
     * Constructor
@@ -810,9 +817,12 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
     */
    public void deltaDestroyedCount()
    {
+      log.warn("[JBJCA-1465] DEBUG: connection destroyed statistic is being executed");
       if (enabled.get()) {
          destroyedCount.incrementAndGet();
+         log.warn("[JBJCA-1465] DEBUG: destroyedCount incremented");
          inUseCount.decrementAndGet();
+         log.warn("[JBJCA-1465] DEBUG: inUseCount decremented");
       }
    }
 
