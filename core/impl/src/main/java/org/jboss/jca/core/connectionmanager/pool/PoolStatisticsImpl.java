@@ -22,6 +22,7 @@
 
 package org.jboss.jca.core.connectionmanager.pool;
 
+import org.jboss.jca.core.CoreLogger;
 import org.jboss.jca.core.api.connectionmanager.pool.PoolStatistics;
 import org.jboss.jca.core.spi.transaction.XAResourceStatistics;
 
@@ -158,12 +159,15 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
    private transient AtomicLong startTotalTime;
    private transient AtomicLong startMaxTime;
 
+   private CoreLogger log;
+
    /**
     * Constructor
     * @param maxPoolSize The maximum pool size
     */
-   public PoolStatisticsImpl(int maxPoolSize)
+   public PoolStatisticsImpl(CoreLogger log, int maxPoolSize)
    {
+      this.log = log;
       init(maxPoolSize);
    }
 
@@ -790,6 +794,7 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
     */
    public void deltaCreatedCount()
    {
+      log.debug("[EAPSUP-1109] Changing created count ", new Exception());
       if (enabled.get())
          createdCount.incrementAndGet();
    }
@@ -810,6 +815,7 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
     */
    public void deltaDestroyedCount()
    {
+      log.debug("[EAPSUP-1109] Changing destroyed count ", new Exception());
       if (enabled.get())
          destroyedCount.incrementAndGet();
    }
@@ -842,6 +848,7 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
     */
    public void setInUsedCount(int v)
    {
+      log.debug("Setting inUseCount", new Exception());
       inUseCount.set(v);
       setMaxUsedCount(v);
    }
