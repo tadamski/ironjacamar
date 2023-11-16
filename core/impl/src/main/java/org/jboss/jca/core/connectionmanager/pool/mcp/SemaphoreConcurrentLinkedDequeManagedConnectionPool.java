@@ -625,6 +625,8 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
     */
    public void returnConnection(ConnectionListener cl, boolean kill, boolean cleanup) 
    {
+      log.debug("[EAPSUP-1109] Return connections starts with listener " + cl + " kill " + kill + " cleanup "+ cleanup);
+
       if (pool.getInternalStatistics().isEnabled() && cl.getState() != ConnectionState.DESTROYED)
          pool.getInternalStatistics().deltaTotalUsageTime(System.currentTimeMillis() - cl.getLastCheckedOutTime());
 
@@ -655,12 +657,18 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
       }
 
       ConnectionListenerWrapper clw = cls.get(cl);
+
+      log.debug("[EAPSUP-1109] ConnectionListenerWrapper " + clw);
+
+
       if (cl.getState() == ConnectionState.DESTROYED) 
       {
+         log.debugf("ManagedConnection is being returned after it was destroyed: %s", cl);
          log.tracef("ManagedConnection is being returned after it was destroyed: %s", cl);
 
          if (clw != null && clw.hasPermit()) 
          {
+            log.debug("[EAPSUP-1109] Releasing the connection and setting permit to false");
             clw.setHasPermit(false);
             pool.getLock().release();
          }
@@ -672,18 +680,22 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
       {
          try 
          {
+            log.debug("[EAPSUP-1109] Connection cleanup");
             cl.getManagedConnection().cleanup();
          }
          catch (ResourceException re) 
          {
+            log.debug("[EAPSUP-1109] Connection cleanup failed", re);
             log.resourceExceptionCleaningUpManagedConnection(cl, re);
             kill = true;
          }
       }
 
       // We need to destroy this one
-      if (clw == null || cl.getState() == ConnectionState.DESTROY || cl.getState() == ConnectionState.DESTROYED)
+      if (clw == null || cl.getState() == ConnectionState.DESTROY || cl.getState() == ConnectionState.DESTROYED) {
+         log.debug("[EAPSUP-1109] We need to destroy this one");
          kill = true;
+      }
 
       // This is really an error
       if (!kill && isSize(poolConfiguration.getMaxSize() + 1))
@@ -695,13 +707,16 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
       boolean releasePermit = false;
       if (clw != null)
       {
+         log.debug("[EAPSUP-1109] We have a wrapper");
          if (clw.hasPermit())
          {
+            log.debug("[EAPSUP-1109] Wrapper has a permit");
             clw.setHasPermit(false);
             releasePermit = true;
          }
          if (clw.isCheckedOut())
          {
+            log.debug("[EAPSUP-1109] Decrementing checked out size");
             clw.setCheckedOut(false);
             checkedOutSize.decrementAndGet();
          }
@@ -716,24 +731,29 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
          // e.g. JMS can do this via an ExceptionListener on the connection.
          // I have twice had to reinstate this line of code, PLEASE DO NOT
          // REMOVE IT!
+         log.debug("[EAPSUP-1109] Removing connection listener from the pool");
          doRemoveConnectionListenerFromPool(cl);
       }
       // return to the pool
       else 
       {
+         log.debug("[EAPSUP-1109] Not killing - returning to the pool");
          cl.toPool();
          if (!clq.contains(clw)) 
          {
+            log.debug("[EAPSUP-1109] Adding connection to available pool");
             clq.addLast(clw);
          } 
          else 
          {
+            log.debug("[EAPSUP-1109] Not killing - returning to the pool");
             log.attemptReturnConnectionTwice(cl, new Throwable("STACKTRACE"));
          }
       }
 
       if (kill)
       {
+         log.debugf("Destroying returned connection %s", cl);
          log.tracef("Destroying returned connection %s", cl);
 
          if (Tracer.isEnabled())
@@ -746,6 +766,7 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
          cl.destroy();
       }
 
+      log.debug("Release permit at the end " + releasePermit);
       if (releasePermit)
       {
          pool.getLock().release();

@@ -177,7 +177,7 @@ public abstract class AbstractPool implements Pool
       this.sharable = sharable;
       this.mcpClass = mcp;
       this.log = getLogger();
-      this.statistics = new PoolStatisticsImpl(pc.getMaxSize());
+      this.statistics = new PoolStatisticsImpl(log, pc.getMaxSize());
       this.permits = new Semaphore(pc.getMaxSize(), pc.isFair(), statistics);
       this.capacity = null;
       this.interleaving = false;
