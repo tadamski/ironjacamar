@@ -794,9 +794,9 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
     */
    public void deltaCreatedCount()
    {
-      log.debug("[EAPSUP-1109] Changing created count ", new Exception());
       if (enabled.get())
          createdCount.incrementAndGet();
+      log.debug("[JBEAP-26088] Changing created count "+createdCount.get(), new Exception());
    }
 
    /**
@@ -815,9 +815,9 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
     */
    public void deltaDestroyedCount()
    {
-      log.debug("[EAPSUP-1109] Changing destroyed count ", new Exception());
       if (enabled.get())
          destroyedCount.incrementAndGet();
+      log.debug("[JBEAP-26088] Changing destroyed count to "+destroyedCount.get(), new Exception());
    }
 
    /**
@@ -848,9 +848,9 @@ public class PoolStatisticsImpl implements PoolStatistics, XAResourceStatistics
     */
    public void setInUsedCount(int v)
    {
-      log.debug("Setting inUseCount", new Exception());
       inUseCount.set(v);
       setMaxUsedCount(v);
+      log.debug("[JBEAP-26088] Setting inUseCount to "+inUseCount.get(), new Exception());
    }
 
    /**
