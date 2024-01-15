@@ -381,6 +381,14 @@ public class CachedConnectionManagerImpl implements CachedConnectionManager
 
       // Note iterator of CopyOnWriteArrayList does not support remove method
       // We use here remove on CopyOnWriteArrayList directly
+
+      log.debug("[JBEAP-26088] Changing created count");
+      log.debug("[JBEAP-26088] Looking for connection " + connection);
+      log.debug("[JBEAP-26088] Connection list");
+      for (ConnectionRecord connectionRecord : conns) {
+         log.debug("[JBEAP-26088] " + connectionRecord.getConnection());
+      }
+
       for (ConnectionRecord connectionRecord : conns)
       {
          if (connectionRecord.getConnection() == connection)
