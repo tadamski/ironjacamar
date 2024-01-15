@@ -1673,6 +1673,8 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
                                                         Tracer.isRecordCallstacks() ?
                                                         new Throwable("CALLSTACK") : null);
 
+                     log.debug("[JBEAP-26088] Granting the permit during connection dissociation");
+                     entry.getValue().setHasPermit(true);
                      returnConnection(cl, false, false);
 
                      return true;
