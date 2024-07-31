@@ -39,6 +39,8 @@ import org.jboss.jca.core.connectionmanager.pool.idle.IdleRemover;
 import org.jboss.jca.core.connectionmanager.pool.validator.ConnectionValidator;
 import org.jboss.jca.core.tracer.Tracer;
 
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -69,6 +71,25 @@ import org.jboss.logging.Messages;
  */
 public class SemaphoreArrayListManagedConnectionPool implements ManagedConnectionPool
 {
+
+   private final static boolean DISABLE_LAZY_ASSOCIATION;
+   static
+   {
+      DISABLE_LAZY_ASSOCIATION = (boolean) AccessController.doPrivileged(new PrivilegedAction()
+      {
+         public Boolean run()
+         {
+            try
+            {
+               if (System.getProperty("disable.lazy.association") != null)
+                  return Boolean.TRUE;
+            } catch (Throwable ignored) {
+               // Ignore
+            }
+            return Boolean.FALSE;
+         }
+      });
+   }
    /** The log */
    private CoreLogger log;
 
@@ -1538,6 +1559,9 @@ public class SemaphoreArrayListManagedConnectionPool implements ManagedConnectio
     */
    private boolean detachConnectionListener()
    {
+      if(DISABLE_LAZY_ASSOCIATION){
+         return false;
+      }
       synchronized (cls)
       {
          ConnectionListener cl = null;
