@@ -1,6 +1,6 @@
 #.project
 .settings
-#.classpath
+.classpath
 standalone/**
 build.debug.xml
 .idea
@@ -43,3 +43,6 @@ ${test.dir}/
 .checkstyle
 
 target
+
+.vscode
+.project
