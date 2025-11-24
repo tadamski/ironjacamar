@@ -182,8 +182,11 @@ public class IdleRemover
       try
       {
          this.lock.lock();
-         
+
+          System.out.println("IDZIE INTERNAL REGISTER");
          this.registeredPools.addIfAbsent(mcp);
+
+          System.out.println("TERAZ "+registeredPools.size());
          
          if (interval > 1 && interval / 2 < this.interval) 
          {
@@ -254,22 +257,25 @@ public class IdleRemover
          
          try
          {
-            lock.lock();
+             Thread.sleep(10000);
+             lock.lock();
             
             while (!shutdown.get())
             {
-               boolean result = instance.condition.await(instance.interval, TimeUnit.MILLISECONDS);
+                Thread.sleep(1000);
+               boolean result = true;//instance.condition.await(instance.interval, TimeUnit.MILLISECONDS);
 
-               if (logger.isTraceEnabled())
-               {
-                  logger.trace("Result of await: " + result);
-               }
+//               if (logger.isTraceEnabled())
+//               {
+//                  logger.trace("Result of await: " + result);
+//               }
 
-               if (logger.isDebugEnabled())
-               {
-                  logger.debug("Notifying pools, interval: " + interval);  
-               }
-     
+//               if (logger.isDebugEnabled())
+//               {
+//                  logger.debug("Notifying pools, interval: " + interval);
+//               }
+
+                System.out.println("REGISTERED POOLS SIZE "+registeredPools.size());
                for (IdleConnectionRemovalSupport mcp : registeredPools)
                {
                   mcp.removeIdleConnections();

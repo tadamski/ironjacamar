@@ -42,6 +42,8 @@ public enum ConnectionState
    DESTROY,
    
    /**Connection is destroyed*/
-   DESTROYED;
+   DESTROYED,
+
+   TO_BE_DESTROYED;
 
 }

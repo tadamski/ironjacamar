@@ -150,6 +150,23 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
       }
    }
 
+    private static boolean idleRemovalTesting;
+    static
+    {
+        String value = SecurityActions.getSystemProperty("ironjacamar.idle_removal_testing");
+        if (value != null && !value.trim().equals(""))
+        {
+            try
+            {
+                idleRemovalTesting = Boolean.valueOf(value);
+            }
+            catch (Throwable t)
+            {
+                idleRemovalTesting = true;
+            }
+        }
+    }
+
    /**
     * Constructor
     */
@@ -200,11 +217,13 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
          PoolFiller.fillPool(new FillRequest(this, pc.getInitialSize()));
       }
 
-      if (poolConfiguration.getIdleTimeoutMinutes() > 0) 
+       System.out.println("SPRAWDZAM CZY REJESTROWAC IDLE REMOVAL "+idleRemovalTesting);
+      if (poolConfiguration.getIdleTimeoutMinutes() > 0 || idleRemovalTesting)
       {
          // Register removal support
-         IdleRemover.getInstance().registerPool(this,
-                                                poolConfiguration.getIdleTimeoutMinutes() * 1000L * 60);
+          long interval = !idleRemovalTesting ? poolConfiguration.getIdleTimeoutMinutes() * 1000L * 60 : 10L;
+          IdleRemover.getInstance().registerPool(this,
+                  interval);
       }
 
       if (poolConfiguration.isBackgroundValidation() && poolConfiguration.getBackgroundValidationMillis() > 0) 
@@ -379,7 +398,8 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
                   try
                   {
                      connectionLock.lock();
-                     if(clw.getConnectionListener().getState().equals(ConnectionState.DESTROY) || clw.getConnectionListener().getState().equals(ConnectionState.DESTROYED))
+                     if(clw.getConnectionListener().getState().equals(ConnectionState.DESTROY) || clw.getConnectionListener().getState().equals(ConnectionState.DESTROYED)
+                         || clw.getConnectionListener().getState().equals(ConnectionState.TO_BE_DESTROYED))
                      {
                         continue;
                      }
@@ -938,24 +958,30 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
       long now = System.currentTimeMillis();
       long timeoutSetting = poolConfiguration.getIdleTimeoutMinutes() * 1000L * 60;
 
+      if(idleRemovalTesting)
+      {
+          timeoutSetting = 10;
+      }
+       System.out.println("IDLE TO "+idleRemovalTesting +" A TIMEOUT WYSZEDL "+idleRemovalTesting);
+
       CapacityDecrementer decrementer = pool.getCapacity().getDecrementer();
 
       if (decrementer == null)
          decrementer = DefaultCapacity.DEFAULT_DECREMENTER;
 
-      if (TimedOutDecrementer.class.getName().equals(decrementer.getClass().getName()) ||
-          TimedOutFIFODecrementer.class.getName().equals(decrementer.getClass().getName()))
-      {
-         // Allow through each minute
-         if (now < (lastIdleCheck + 60000L))
-            return;
-      }
-      else
-      {
+//      if (TimedOutDecrementer.class.getName().equals(decrementer.getClass().getName()) ||
+//          TimedOutFIFODecrementer.class.getName().equals(decrementer.getClass().getName()))
+//      {
+//         // Allow through each minute
+//         if (now < (lastIdleCheck + 60000L))
+//            return;
+//      }
+//      else
+//      {
          // Otherwise, strict check
          if (now < (lastIdleCheck + timeoutSetting))
             return;
-      }
+//      }
 
       lastIdleCheck = now;
 
@@ -992,42 +1018,49 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
       }
 
       Iterator<ConnectionListenerWrapper> clwIter = clq.iterator();
-      while (clwIter.hasNext() && destroy) 
-      {
-         // Nothing left to destroy
-         if (clq.size() == 0)
-            break;
+      while (clwIter.hasNext() && destroy) {
+          // Nothing left to destroy
+          if (clq.size() == 0)
+              break;
 
-         ConnectionListenerWrapper clw = clwIter.next();
+          ConnectionListenerWrapper clw = clwIter.next();
+          clw.getConnectionListener().getLock().lock();
+          try {
+              destroy = decrementer.shouldDestroy(clw.getConnectionListener(),
+                      timeout, poolSize.get(),
+                      poolConfiguration.getMinSize(), destroyed);
+              if (destroy) {
+                  clw.getConnectionListener().setState(ConnectionState.TO_BE_DESTROYED);
+              }
+          } finally {
+              clw.getConnectionListener().getLock().unlock();
+          }
 
-         destroy = decrementer.shouldDestroy(clw.getConnectionListener(),
-                                             timeout, poolSize.get(),
-                                             poolConfiguration.getMinSize(), destroyed);
 
-         if (destroy) 
-         {
-            if (shouldRemove() || !isRunning())
-            {
-               if (pool.getInternalStatistics().isEnabled())
-                  pool.getInternalStatistics().deltaTimedOut();
+          if (destroy) {
+              System.out.println("WYWALAM!");
+              if (shouldRemove() || !isRunning()) {
+                  if (pool.getInternalStatistics().isEnabled()) {
+                      pool.getInternalStatistics().deltaTimedOut();
+                  }
 
-               log.tracef("Idle connection cl=%s", clw.getConnectionListener());
+                  log.tracef("Idle connection cl=%s", clw.getConnectionListener());
 
-               // We need to destroy this one, so deregister now
-               if (doRemoveConnectionListenerFromPool(clw.getConnectionListener()) == null)
-                  log.tracef("Connection Pool did not contain: %s", clw.getConnectionListener());
+                  // We need to destroy this one, so deregister now
+                  if (doRemoveConnectionListenerFromPool(clw.getConnectionListener()) == null) {
+                      log.tracef("Connection Pool did not contain: %s", clw.getConnectionListener());
+                  }
 
-               if (!clq.remove(clw)) 
-                  log.tracef("Available connection queue did not contain: %s", clw.getConnectionListener());
+                  if (!clq.remove(clw)) {
+                      log.tracef("Available connection queue did not contain: %s", clw.getConnectionListener());
+                  }
 
-               destroyConnections.add(clw);
-               destroyed++;
-            } 
-            else 
-            {
-               destroy = false;
-            }
-         }
+                  destroyConnections.add(clw);
+                  destroyed++;
+              } else {
+                  destroy = false;
+              }
+          }
       }
 
       // We found some connections to destroy
@@ -1035,20 +1068,23 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
       {
          for (ConnectionListenerWrapper clw : destroyConnections) 
          {
-            log.tracef("Destroying connection %s", clw.getConnectionListener());
+               log.tracef("Destroying connection %s", clw.getConnectionListener());
 
-            if (pool.getInternalStatistics().isEnabled())
-               pool.getInternalStatistics().deltaTotalPoolTime(System.currentTimeMillis() -
-                                                               clw.getConnectionListener().getLastReturnedTime());
+               if (pool.getInternalStatistics().isEnabled())
+               {
+                  pool.getInternalStatistics().deltaTotalPoolTime(System.currentTimeMillis() -
+                        clw.getConnectionListener().getLastReturnedTime());
+               }
 
-            if (Tracer.isEnabled())
-               Tracer.destroyConnectionListener(pool.getName(), this, clw.getConnectionListener(),
-                                                false, true, false, false, false, false, false,
-                                                Tracer.isRecordCallstacks() ?
-                                                new Throwable("CALLSTACK") : null);
-            removeConnectionListenerFromPool(clw);
-            clw.getConnectionListener().destroy();
-            clw = null;
+               if (Tracer.isEnabled()) {
+                  Tracer.destroyConnectionListener(pool.getName(), this, clw.getConnectionListener(),
+                        false, true, false, false, false, false, false,
+                        Tracer.isRecordCallstacks() ? new Throwable("CALLSTACK") : null);
+               }
+               removeConnectionListenerFromPool(clw);
+               clw.getConnectionListener().destroy();
+               clw = null;
+
          }
 
          if (isRunning()) 
@@ -1060,6 +1096,7 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
             {
                if (poolConfiguration.getMinSize() > 0) 
                {
+                   System.out.println("BEDZIE PREFIL");
                   prefill();
                }
                else 
@@ -1432,7 +1469,10 @@ public class SemaphoreConcurrentLinkedDequeManagedConnectionPool implements Mana
    }
 
    private ConnectionListenerWrapper doRemoveConnectionListenerFromPool(ConnectionListener cl) {
-      ConnectionListenerWrapper w = cls.remove(cl);
+      try {
+          Thread.sleep(50);
+      } catch(InterruptedException ignored){}
+       ConnectionListenerWrapper w = cls.remove(cl);
       if (w != null) {
          poolSize.decrementAndGet();
       }
