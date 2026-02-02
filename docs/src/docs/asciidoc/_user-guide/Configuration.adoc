@@ -535,8 +535,8 @@ IronJacamar test suite.
 [[jca_security]]
 ==== Security
 
-The Java EE Connector Architecture 1.6 specification allows units of
-`javax.resource.spi.Work` to be executed in a specific security context.
+The Jakarta Connectors specification allows units of
+`jakarta.resource.spi.Work` to be executed in a specific security context.
 
 This is done through the use of Java Authentication Service Provider
 Interface for Containers (JSR-196) call backs using the
@@ -545,12 +545,12 @@ Interface for Containers (JSR-196) call backs using the
 The support is activated by letting the work instance implement the
 
 ....
-javax.resource.spi.work.WorkContextProvider
+jakarta.resource.spi.work.WorkContextProvider
         
 ....
 
 interface and returning an instance of
-`javax.resource.spi.work.SecurityContext`.
+`jakarta.resource.spi.work.SecurityContext`.
 
 The security callback is configured through the `++>++workmanager++<++`
 element for the deployment, either in `ironjacamar.xml` or in the

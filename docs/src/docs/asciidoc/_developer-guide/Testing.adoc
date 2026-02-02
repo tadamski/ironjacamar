@@ -54,7 +54,7 @@ against the actual specification text.
 
 Each test can only depend on:
 
-* The official Java Connector Architecture API (javax.resource)
+* The official Jakarta Connectors API (jakarta.resource)
 * Interfaces and classes in the test suite that extends/implements the
 official API
 
@@ -74,7 +74,7 @@ specific interfaces.
 
 Each test can depend on:
 
-* The official Java Connector Architecture API (javax.resource)
+* The official Jakarta Connectors API (jakarta.resource)
 * The IronJacamar specific APIs (org.jboss.jca.xxx.api)
 * Interfaces and classes in the test suite that extends/implements these
 APIs
@@ -87,7 +87,7 @@ org.jboss.jca.core.workmanager
       
 ....
 
-These test cases can use both the embedded JCA environment or be
+These test cases can use both the embedded Jakarta Connectors environment or be
 implemented as standard POJO based JUnit test cases.
 
 [[jbimpltest]]
@@ -99,7 +99,7 @@ not exposed through the interface.
 
 Each test can depend on:
 
-* The official Java Connector Architecture API (javax.resource)
+* The official Jakarta Connectors API (jakarta.resource)
 * The IronJacamar specific APIs (org.jboss.jca.xxx.api)
 * The IronJacamar specific implementation (org.jboss.jca.xxx.yyy)
 * Interfaces and classes in the test suite

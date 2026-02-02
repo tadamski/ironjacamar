@@ -39,57 +39,6 @@ represent the binary protocol between the resource adapter and the EIS.
 To the resource adapter it will look as it is communicating with the
 real Enterprise Information System installation.
 
-[[eis_ant]]
-=== Apache Ant
-
-The Apache Ant tasks for starting and stopping the EIS test server are
-defined as the following
-
-....
-<taskdef name="start"
-         classname="org.jboss.jca.test.eis.ant.Start"
-         classpathref="main.lib.path.id"/>
-
-<taskdef name="stop"
-         classname="org.jboss.jca.test.eis.ant.Stop"
-         classpathref="main.lib.path.id"/>
-
-      
-....
-
-where `main.lib.path.id` contains the `ironjacamar-test-eis.jar` file.
-
-The `start` task is used, like
-
-....
-<start host="localhost" port="1400"
-       handler="org.jboss.jca.test.eis.EchoHandler">
-  <classpath>
-    <pathelement location="${build.eis.dir}/test"/>
-  </classpath>
-</start>
-
-      
-....
-
-which starts the EIS test server on `localhost` using port `1400` with
-an implementation of the `Handler` interface of
-`org.jboss.jca.test.eis.EchoHandler` and a classpath of
-`$++{++build.eis.dir}/test`.
-
-The `stop` task is used, like
-
-....
-<stop host="localhost" port="1400"/>
-
-      
-....
-
-which stops the EIS test server on `localhost` using port `1400`.
-
-Between the `start` and `stop` tasks the resource adapters unit tests
-can be executed.
-
 [[eis_maven]]
 === Apache Maven
 
@@ -104,7 +53,7 @@ defined as the following
       <groupId>org.jboss.ironjacamar</groupId>
       <artifactId>ironjacamar-test-eis</artifactId>
       <!-- The version of the plugin you want to use -->
-      <version>1.2.0.Final</version>
+      <version>${version.ironjacamar}</version>
       <executions>
         <execution>
           <goals>
@@ -125,7 +74,7 @@ defined as the following
       <groupId>org.jboss.ironjacamar</groupId>
       <artifactId>ironjacamar-test-eis</artifactId>
       <!-- The version of the plugin you want to use -->
-      <version>1.2.0.Final</version>
+      <version>${version.ironjacamar}</version>
       <executions>
         <execution>
           <goals>

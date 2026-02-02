@@ -1,13 +1,5 @@
-[[gettingstarted]]
-== Download
-
-The official IronJacamar project page is http://www.ironjacamar.org/
-where you can download the software.
-
-[[download]]
-=== Download
-
-The download location is: http://www.ironjacamar.org/downloads/
+[[releases]]
+=== Releases
 
 Each release is labelled with a version number and an identifier.
 
@@ -33,14 +25,6 @@ complete.
 ** Alpha: Alpha quality. The implementation is a snapshot of the
 development.
 
-An example
-
-....
-ironjacamar-1.2.0.Final.tar.gz
-      
-....
-
-which is a stable release of the project.
 
 [[download_maven]]
 === Maven repository

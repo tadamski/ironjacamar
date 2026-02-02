@@ -5,15 +5,10 @@
 [[jdk]]
 ==== Java Development Kit (JDK)
 
-You must have the following JDK installed in order to build the project:
+In order to build the project you must have JDK 11{plus} (f.e. OpenJDK) installed.
 
-* Sun JDK 1.7.x
-* OpenJDK 1.7.x
-* Sun JDK 1.8.x
-* OpenJDK 1.8.x
 
-Remember to ensure that "javac" and "java" are in your path (or
-symlinked).
+Remember to ensure that "javac" and "java" are in your path (or symlinked).
 
 ....
 JAVA_HOME=/location/to/javahome
@@ -24,37 +19,21 @@ export PATH
       
 ....
 
-[[ant]]
-==== Apache Ant
+[[maven]]
+==== Apache Maven
 
-You must have Apache Ant 1.9.4{plus} installed on your system.
+You must have Apache Maven installed on your system.
 
-Remember to ensure that "ant" are in your path (or symlinked).
+Remember to ensure that "mvn" are in your path (or symlinked).
 
 ....
-ANT_HOME=/location/to/anthome
-export ANT_HOME
+MVN_HOME=/location/to/mvnhome
+export MVN_HOME
 
-PATH=$ANT_HOME/bin:$PATH
+PATH=$MVN_HOME/bin:$PATH
 export PATH
       
 ....
-
-You may need to set the memory settings for the Apache Ant process like
-
-....
-ANT_OPTS="$ANT_OPTS -Xms128m -Xmx512m"
-export ANT_OPTS
-      
-....
-
-[[ivy]]
-==== Apache Ivy
-
-The IronJacamar project uses Apache Ivy for dependency management.
-
-Apache Ivy is automatically downloaded and included in the development
-environment, so no additional setup is required.
 
 ==== Git
 
@@ -93,23 +72,6 @@ git remote add upstream git@github.com:ironjacamar/ironjacamar.git
       
 ....
 
-[[gitbranches]]
-==== Git branches
-
-We have the following branches for the project:
-
-* master
-+
-The head of development targeting the next upcoming release.
-* 1.0
-+
-The development targeting the IronJacamar 1.0 releases.
-* 1.1
-+
-The development targeting the IronJacamar 1.1 releases.
-* 1.2
-+
-The development targeting the IronJacamar 1.2 releases.
 
 [[compiling]]
 === Compiling the source code
@@ -117,57 +79,7 @@ The development targeting the IronJacamar 1.2 releases.
 In order to build the IronJacamar project you execute:
 
 ....
-ant <target>
-    
-....
-
-where target is one of
-
-* jars
-+
-Builds the JAR archives in the distribution.
-* test
-+
-Builds the JAR archives in the distribution and runs all the test cases.
-* module-test
-+
-Builds the JAR archives in the distribution and runs all the test cases
-for the specified module (`-Dmodule=++<++modulename++>++`).
-* one-test
-+
-Builds the JAR archives in the distribution and runs the specified test
-case (`-Dmodule=++<++modulename++>++ -Dtest=++<++classname++>++`).
-* docs
-+
-Builds the API documentation for the project.
-* aggregated-javadocs
-+
-Builds the Aggregated API documentation for the project.
-* aggregated-javadocs-api-spi
-+
-Builds the Aggregated API documentation for API/SPI of the project.
-* sjc
-+
-Builds the standalone environment using IronJacamar/SJC.
-* release
-+
-Builds a release of the project.
-* clean
-+
-Cleans the project of temporary files.
-* clean-cache
-+
-Cleans the Apache Ivy repository.
-
-See the full list of targets in the main build.xml file.
-
-An example to get the IronJacamar/SJC built and running:
-
-....
-ant clean sjc
-cd target/sjc/bin
-./run.sh
-    
+mvn install
 ....
 
 [[creating_a_patch]]

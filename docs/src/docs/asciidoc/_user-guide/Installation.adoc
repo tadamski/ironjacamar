@@ -9,14 +9,14 @@ location of your choice.
 Extract the distribution using
 
 ....
-tar xzf ironjacamar-1.2.0.Final.tar.gz
+tar xzf ironjacamar-${version.ironjacamar}.Final.tar.gz
      
 ....
 
 The distribution will be located in a directory named
 
 ....
-ironjacamar-1.2.0.Final
+ironjacamar-${version.ironjacamar}.Final
      
 ....
 
@@ -26,7 +26,7 @@ ironjacamar-1.2.0.Final
 Extract the distribution using
 
 ....
-unzip ironjacamar-1.2.0.Final.zip
+unzip ironjacamar-${version.ironjacamar}.Final.zip
      
 ....
 
@@ -36,7 +36,7 @@ WinRar.
 The distribution will be located in a directory named
 
 ....
-ironjacamar-1.2.0.Final
+ironjacamar-${version.ironjacamar}.Final
      
 ....
 
@@ -57,8 +57,8 @@ The IronJacamar container has the following directory structure:
 [[installas]]
 === WildFly
 
-The IronJacamar provides the Java EE Connector Architecture (JCA)
-container for WildFly 8 and future versions.
+The IronJacamar provides the Jakarta Connectors container for WildFly
+and future versions.
 
 The container can be updated in WildFly by using the `as-upgrader.sh`
 script in the `doc/as` directory. This will allow an easy installation
@@ -68,14 +68,13 @@ environment.
 The script can be used, like:
 
 ....
-./as-upgrader.sh 1.2.0.Final /path/to/wildfly/installation
+./as-upgrader.sh ${version.ironjacamar} /path/to/wildfly/installation
      
 ....
 
-where `1.2.0.Final` is the version identifier of the IronJacamar
+where `${version.ironjacamar}` is the version identifier of the IronJacamar
 container and the path points to the top-level directory of the WildFly
-installation. You can also use `1.1.1-SNAPSHOT` in order to upgrade to a
-patch snapshot build.
+installation.
 
 You can get an overview of all IronJacamar releases by searching our
 https://repository.jboss.org/nexus/[Nexus] repository.

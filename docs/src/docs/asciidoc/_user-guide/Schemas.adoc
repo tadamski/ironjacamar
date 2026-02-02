@@ -1,90 +1,20 @@
 == Schemas
 
-All the IronJacamar schemas are deployed under
-http://www.ironjacamar.org/schema/.
-
-[[jca17]]
-== Java EE Connector Architecture 1.7
+[[connectors21]]
+== Jakarta Connectors 2.1
 
 [source,xml]
 ----
-      
-    
+include::https://jakarta.ee/xml/ns/jakartaee/connector_2_1.xsd[parse]
 ----
 
-[[jca16]]
-== Java EE Connector Architecture 1.6
-
-[source,xml]
-----
-      
-    
-----
-
-[[jca15]]
-== Java EE Connector Architecture 1.5
-
-[source,xml]
-----
-      
-    
-----
-
-[[jca10]]
-== Java EE Connector Architecture 1.0
-
-[source,xml]
-----
-      
-    
-----
-
-[[ironjacamar10]]
-== IronJacamar 1.0
-
-[source,xml]
-----
-      
-
-    
-----
-
-[[ironjacamar11]]
-== IronJacamar 1.1
-
-[source,xml]
-----
-      
-
-    
-----
 
 [[ironjacamar12]]
 == IronJacamar 1.2
 
 [source,xml]
 ----
-      
-
-    
-----
-
-[[ra10]]
-== Resource adapters 1.0
-
-[source,xml]
-----
-      
-    
-----
-
-[[ra11]]
-== Resource adapters 1.1
-
-[source,xml]
-----
-      
-    
+include::../../../../../common/descriptors/src/main/resources/schema/ironjacamar_1_2.xsd[parse]
 ----
 
 [[ra12]]
@@ -92,35 +22,7 @@ http://www.ironjacamar.org/schema/.
 
 [source,xml]
 ----
-      
-    
-----
-
-[[ds10]]
-== Datasources 1.0
-
-[source,xml]
-----
-      
-    
-----
-
-[[ds11]]
-== Datasources 1.1
-
-[source,xml]
-----
-      
-    
-----
-
-[[ds12]]
-== Datasources 1.2
-
-[source,xml]
-----
-      
-    
+include::../../../../../common/descriptors/src/main/resources/schema/resource-adapters_1_2.xsd[parse]
 ----
 
 [[ds13]]
@@ -128,6 +30,5 @@ http://www.ironjacamar.org/schema/.
 
 [source,xml]
 ----
-      
-    
+include::../../../../../common/descriptors/src/main/resources/schema/resource-adapters_1_3.xsd[parse]
 ----

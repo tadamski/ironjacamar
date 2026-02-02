@@ -26,9 +26,9 @@ http://arquillian.org/[Arquillian] frameworks.
 You will need all the JAR files located in the
 
 ....
-$IRON_JACAMAR_HOME/bin
-$IRON_JACAMAR_HOME/lib
-$IRON_JACAMAR_HOME/lib/embedded
+$IRONJACAMAR_HOME/bin
+$IRONJACAMAR_HOME/lib
+$IRONJACAMAR_HOME/lib/embedded
       
 ....
 
@@ -45,7 +45,7 @@ If you want integration with the Arquillian framework you need to add
 the JAR files located in the
 
 ....
-$IRON_JACAMAR_HOME/lib/embedded/arquillian
+$IRONJACAMAR_HOME/lib/embedded/arquillian
       
 ....
 
@@ -54,7 +54,7 @@ directory as well.
 The Arquillian/Byteman integration is located in the
 
 ....
-$IRON_JACAMAR_HOME/lib/embedded/arquillian/byteman
+$IRONJACAMAR_HOME/lib/embedded/arquillian/byteman
       
 ....
 

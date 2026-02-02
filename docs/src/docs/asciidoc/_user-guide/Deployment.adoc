@@ -36,14 +36,14 @@ Resource adapters (.rar) are deployed by copying the resource adapter
 into the `deploy/` directory
 
 ....
-cp example.rar ironjacamar-1.2.0.Final/deploy
+cp example.rar ${IRONJACAMAR_HOME}/deploy
      
 ....
 
 on a Un++*++x based system or
 
 ....
-copy example.rar ironjacamar-1.2.0.Final\deploy
+copy example.rar ${IRONJACAMAR_HOME}\deploy
      
 ....
 
@@ -460,7 +460,7 @@ can be specified
 +
 : A recovery plugin that uses the
 +
-javax.resource.spi.ValidatingManagedConnectionFactory
+jakarta.resource.spi.ValidatingManagedConnectionFactory
 +
 interface to verify the connection
 
@@ -896,7 +896,7 @@ of SQLException
 |`exception-sorter` |An org.jboss.jca.adapters.jdbc.spi.ExceptionSorter
 that provides a boolean isExceptionFatal(SQLException e) method to
 validate is an exception should be broadcast to all
-javax.resource.spi.ConnectionEventListener as a connectionErrorOccurred
+jakarta.resource.spi.ConnectionEventListener as a connectionErrorOccurred
 message
 |===
 
@@ -1223,7 +1223,7 @@ destroyed. This is the default strategy.
 
 |`InvalidIdleConnections` |All idle connections are checked if they are
 invalid, based on the
-`javax.resource.spi.ValidatingManagedConnectionFactory` return value.
+`jakarta.resource.spi.ValidatingManagedConnectionFactory` return value.
 
 |`IdleConnections` |All idle connections are destroyed.
 
